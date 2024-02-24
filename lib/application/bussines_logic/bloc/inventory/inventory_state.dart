@@ -22,7 +22,7 @@ class InventoryState with _$InventoryState {
     required bool isUnBlocked,
     required bool isChange,
     GetManagementRespModel? getManagementRespModel,
-    int?categoryId,
+    int? categoryId,
   }) = _Initial;
   factory InventoryState.initial() => const InventoryState(
       isLoading: false,
@@ -34,6 +34,5 @@ class InventoryState with _$InventoryState {
       isAddImage: false,
       isUpdate: false,
       isUnBlocked: false,
-      isChange: false
-      );
+      isChange: false);
 }

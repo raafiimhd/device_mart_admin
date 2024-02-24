@@ -8,10 +8,7 @@ class UpdateCategoryModel {
   String categoryName;
   @JsonKey(name: 'categoryID')
   int id;
-  UpdateCategoryModel({
-    required this.categoryName,
-    required this.id
-  });
+  UpdateCategoryModel({required this.categoryName, required this.id});
   factory UpdateCategoryModel.fromJson(Map<String, dynamic> json) {
     return _$UpdateCategoryModelFromJson(json);
   }

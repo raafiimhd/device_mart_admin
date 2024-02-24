@@ -16,7 +16,7 @@ class InventoryEvent with _$InventoryEvent {
   const factory InventoryEvent.getManagement(
       {required GetResponseQurrey getResponseQurrey,
       required GetQurreyModel getQurreyModel}) = GetManagement;
-   const factory InventoryEvent.selectCatogory(
+  const factory InventoryEvent.selectCatogory(
       {required int selectedCatogory,
       required String catogory}) = _SelectCatogory;
 }

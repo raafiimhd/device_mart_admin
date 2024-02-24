@@ -12,7 +12,8 @@ class UpdateInventoryModel {
   int? id;
   @JsonKey(name: 'category_id')
   int? categoryId;
-  UpdateInventoryModel({this.prdctName, this.prdctDesc, this.price, this.id,this.categoryId});
+  UpdateInventoryModel(
+      {this.prdctName, this.prdctDesc, this.price, this.id, this.categoryId});
 
   factory UpdateInventoryModel.fromJson(Map<String, dynamic> json) {
     return _$UpdateInventoryModelFromJson(json);

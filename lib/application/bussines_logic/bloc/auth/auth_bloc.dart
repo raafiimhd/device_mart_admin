@@ -1,5 +1,5 @@
 import 'package:device_mart/domain/models/auth_model/login_model.dart';
-import 'package:device_mart/domain/core/repositories/auth_repositories/auth_repositories.dart';
+import 'package:device_mart/domain/repositories/auth_repositories/auth_repositories.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

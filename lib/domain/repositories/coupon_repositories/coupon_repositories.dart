@@ -17,7 +17,7 @@ abstract class CouponRepositery {
   Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> blockCoupon(
       {required BlockAndUnblockCouponQurreyModel
           blockAndUnblockCouponQurreyModel});
-   Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> unBlockCoupon(
+  Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> unBlockCoupon(
       {required BlockAndUnblockCouponQurreyModel
           blockAndUnblockCouponQurreyModel});
 }

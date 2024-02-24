@@ -1,6 +1,6 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'get_coupon_model.g.dart';
+
 @JsonSerializable()
 class GetCouponModel {
   String? code;

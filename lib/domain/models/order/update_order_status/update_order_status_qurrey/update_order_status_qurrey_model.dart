@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'update_order_status_qurrey_model.g.dart';
+
 @JsonSerializable()
 class UpdateOrderStatusQurreyModel {
   @JsonKey(name: 'statusID')

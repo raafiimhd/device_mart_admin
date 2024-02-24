@@ -1,4 +1,3 @@
-
 import 'package:device_mart/application/bussines_logic/bloc/inventory/inventory_bloc.dart';
 import 'package:device_mart/application/presentation/widgets/show_snackbar/show_snackbar.dart';
 import 'package:device_mart/domain/core/colors/colors.dart';
@@ -8,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class InventoryElevatedButton extends StatelessWidget {
   InventoryElevatedButton({super.key, this.id});
-   int? id;
+  int? id;
   @override
   Widget build(BuildContext context) {
     final prdctBloc = context.read<InventoryBloc>();
@@ -19,7 +18,7 @@ class InventoryElevatedButton extends StatelessWidget {
               context: context,
               color: kRed,
               message: 'cannot add products, Something went wrong');
-        }  
+        }
       },
       builder: (context, state) {
         return Align(

@@ -1,8 +1,8 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:device_mart/domain/models/category_model/add_category_all_model/add_category_model/add_category_model.dart';
 part 'add_category_resp_model.g.dart';
+
 @JsonSerializable()
 class AddCategoryRespModel {
   @JsonKey(name: 'status-code')

@@ -41,19 +41,19 @@ import 'package:device_mart/data/data_provider/sales_report_provider/sales_repor
     as _i10;
 import 'package:device_mart/data/data_provider/user_provider/user_provider.dart'
     as _i13;
-import 'package:device_mart/domain/core/repositories/auth_repositories/auth_repositories.dart'
+import 'package:device_mart/domain/repositories/auth_repositories/auth_repositories.dart'
     as _i14;
-import 'package:device_mart/domain/core/repositories/category_repositories/category_repositories.dart'
+import 'package:device_mart/domain/repositories/category_repositories/category_repositories.dart'
     as _i16;
-import 'package:device_mart/domain/core/repositories/coupon_repositories/coupon_repositories.dart'
+import 'package:device_mart/domain/repositories/coupon_repositories/coupon_repositories.dart'
     as _i18;
-import 'package:device_mart/domain/core/repositories/inventory_repositories/inventory_repositories.dart'
+import 'package:device_mart/domain/repositories/inventory_repositories/inventory_repositories.dart'
     as _i5;
-import 'package:device_mart/domain/core/repositories/order_repositories/order_repositories.dart'
+import 'package:device_mart/domain/repositories/order_repositories/order_repositories.dart'
     as _i7;
-import 'package:device_mart/domain/core/repositories/report_repositories/report_repositories.dart'
+import 'package:device_mart/domain/repositories/report_repositories/report_repositories.dart'
     as _i9;
-import 'package:device_mart/domain/core/repositories/user_repositories/user_repositories.dart'
+import 'package:device_mart/domain/repositories/user_repositories/user_repositories.dart'
     as _i12;
 import 'package:dio/dio.dart' as _i3;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i4;

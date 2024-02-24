@@ -20,7 +20,7 @@ class ScreenUser extends StatelessWidget {
           userQurreyModel: UserQurreyModel(page: 1, count: 10)));
     });
     return Scaffold(
-      backgroundColor: backgroundColor,
+      backgroundColor: kWhite,
       appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56),
           child: CustomAppbar(
@@ -52,7 +52,9 @@ class ScreenUser extends StatelessWidget {
               shrinkWrap: true,
               itemCount: state.userRespModel!.data!.length,
               itemBuilder: (context, index) {
-                return UserListView(user: state.userRespModel!.data![index],);
+                return UserListView(
+                  user: state.userRespModel!.data![index],
+                );
               },
               separatorBuilder: (context, index) => kHeightTen,
             );

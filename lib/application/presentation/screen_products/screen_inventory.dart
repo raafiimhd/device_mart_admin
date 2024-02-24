@@ -11,7 +11,6 @@ import 'package:device_mart/application/presentation/widgets/show_snackbar/show_
 import 'package:device_mart/domain/core/colors/colors.dart';
 import 'package:device_mart/domain/models/inventory_models/get/get_resp_qurrey_model/get_resp_qurrey_model.dart';
 
-
 class ScreenProducts extends StatelessWidget {
   ScreenProducts({
     super.key,

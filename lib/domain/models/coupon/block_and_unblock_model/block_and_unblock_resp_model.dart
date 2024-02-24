@@ -1,6 +1,6 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'block_and_unblock_resp_model.g.dart';
+
 @JsonSerializable()
 class BlockAndUnbockCouponRespModel {
   int? statusCode;

@@ -1,4 +1,3 @@
-
 import 'package:device_mart/application/bussines_logic/bloc/auth/auth_bloc.dart';
 import 'package:device_mart/application/bussines_logic/bloc/category/category_bloc.dart';
 import 'package:device_mart/application/bussines_logic/bloc/coupon/coupon_bloc.dart';
@@ -17,11 +16,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await configureInjection();
-  runApp(DeviceMartAdminApp(appRouteGenerator: AppRoute(),));
+  runApp(DeviceMartAdminApp(
+    appRouteGenerator: AppRoute(),
+  ));
 }
 
 class DeviceMartAdminApp extends StatelessWidget {
-   const DeviceMartAdminApp({super.key, required this.appRouteGenerator});
+  const DeviceMartAdminApp({super.key, required this.appRouteGenerator});
 
   final AppRoute appRouteGenerator;
 
@@ -36,18 +37,18 @@ class DeviceMartAdminApp extends StatelessWidget {
           create: (context) => getIt<SplashScreenCubit>(),
         ),
         BlocProvider(create: (context) => getIt<CategoryBloc>()),
-        BlocProvider(create: (context)=> getIt<InventoryBloc>()),
-        BlocProvider(create: (context)=> getIt<CouponBloc>()),
-        BlocProvider(create: (context)=> getIt<UserBloc>()),
-        BlocProvider(create: (context)=> getIt<OrderBloc>()),
-        BlocProvider(create: (context)=> getIt<ReportBloc>())
+        BlocProvider(create: (context) => getIt<InventoryBloc>()),
+        BlocProvider(create: (context) => getIt<CouponBloc>()),
+        BlocProvider(create: (context) => getIt<UserBloc>()),
+        BlocProvider(create: (context) => getIt<OrderBloc>()),
+        BlocProvider(create: (context) => getIt<ReportBloc>())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.blue,
-          scaffoldBackgroundColor: backgroundColor,
+          scaffoldBackgroundColor: kWhite,
         ),
         initialRoute: Routes.initial,
         onGenerateRoute: appRouteGenerator.onGenerateRoute,

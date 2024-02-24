@@ -1,4 +1,3 @@
-
 import 'package:device_mart/application/bussines_logic/bloc/inventory/inventory_bloc.dart';
 import 'package:device_mart/application/presentation/screen_products/widgets/category_adder.dart';
 import 'package:device_mart/application/presentation/screen_products/widgets/add_inventory_button.dart';
@@ -79,15 +78,13 @@ class AddProductScreen extends StatelessWidget {
                             ),
                             child: SizedBox(
                               width: double.infinity,
-                              child: state.isImageUploading
-                                  ? null
-                                  : SizedBox(
-                                      width: double.infinity,
-                                      child: state.imageModel != null
-                                          ? Image.file(
-                                              state.imageModel!.fileImage)
-                                          : null,
-                                    ),
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: state.imageModel != null
+                                    ? Image.file(state.imageModel!.fileImage)
+                                    : Image.network(
+                                        'https://www.shutterstock.com/image-vector/computer-notebook-mockup-transparent-screen-260nw-1099831238.jpg'),
+                              ),
                             ),
                           ),
                           kHeightTwenty,

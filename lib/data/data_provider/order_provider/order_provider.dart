@@ -12,7 +12,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:device_mart/domain/core/repositories/order_repositories/order_repositories.dart';
+import 'package:device_mart/domain/repositories/order_repositories/order_repositories.dart';
 
 @LazySingleton(as: OrderRepository)
 @injectable
@@ -97,8 +97,14 @@ class OrderProvider implements OrderRepository {
       } else {
         return Left(ErrorMsg(message: 'Token is null.'));
       }
-      final response = await dio.put(ApiEndPoints.updateOrderStatusEndPoint,
-          data: updateOrderStatusQurreyModel.toJson());
+      final response = await dio.put(
+        ApiEndPoints.baseUrl +
+            ApiEndPoints.updateOrderStatusEndPoint
+                .replaceFirst('{orderID}',
+                    updateOrderStatusQurreyModel.orderId.toString())
+                .replaceFirst('{statusID}',
+                    updateOrderStatusQurreyModel.statusId.toString()),
+      );
       if (response.statusCode == 200 || response.statusCode == 201) {
         return Right(UpdateOrderStatusRespModel.fromJson(response.data));
       } else {

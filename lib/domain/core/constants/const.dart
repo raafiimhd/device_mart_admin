@@ -8,8 +8,14 @@ late final double sWidth;
 const kHeightTwenty = SizedBox(
   height: 20,
 );
+const kHeight30 = SizedBox(
+  height: 30,
+);
 const kHeightTen = SizedBox(
   height: 10,
+);
+const kHeight100 = SizedBox(
+  height: 100,
 );
 const kHeightFive = SizedBox(
   height: 5,
@@ -32,6 +38,13 @@ TextStyle kronOne(
     {double fontSize = 0.035,
     FontWeight fontWeight = FontWeight.normal,
     Color color = kBlack}) {
+  return GoogleFonts.kronaOne(
+      fontSize: fontSize * sWidth, fontWeight: fontWeight, color: color);
+}
+TextStyle subHeading(
+    {double fontSize = 0.025,
+    FontWeight fontWeight = FontWeight.normal,
+    Color color = kWhite}) {
   return GoogleFonts.kronaOne(
       fontSize: fontSize * sWidth, fontWeight: fontWeight, color: color);
 }

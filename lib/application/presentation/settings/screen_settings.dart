@@ -21,11 +21,10 @@ class ScreenSettings extends StatelessWidget {
             InkWell(
               child: ListTile(
                 leading: const Icon(Icons.policy_outlined),
-                    title: const Text('Privacy And Policies',
-                    style: TextStyle(
-                      fontSize: 20
-                    ),
-                    ),
+                title: const Text(
+                  'Privacy And Policies',
+                  style: TextStyle(fontSize: 20),
+                ),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () => Navigator.of(context).pushNamed('/privacy'),
               ),
@@ -33,43 +32,40 @@ class ScreenSettings extends StatelessWidget {
             InkWell(
               child: ListTile(
                 leading: const Icon(Icons.info),
-                    title: const Text('About Us',
-                    style: TextStyle(
-                      fontSize: 20
-                    ),
-                    ),
+                title: const Text(
+                  'About Us',
+                  style: TextStyle(fontSize: 20),
+                ),
                 trailing: const Icon(Icons.arrow_forward_ios_outlined),
                 onTap: () => Navigator.of(context).pushNamed('/about'),
               ),
             ),
-             InkWell(
+            InkWell(
               child: ListTile(
-                leading: const Icon(Iconsax.logout
-                ,color: kRed,),
-                    title: const Text('Logout',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: kRed
-                    ),
-                    ),
-                trailing: const Icon(Icons.arrow_forward_ios_outlined,
-                color: kRed,),
-                onTap: () => logoutDialoge(context)
-              ),
+                  leading: const Icon(
+                    Iconsax.logout,
+                    color: kRed,
+                  ),
+                  title: const Text(
+                    'Logout',
+                    style: TextStyle(fontSize: 20, color: kRed),
+                  ),
+                  trailing: const Icon(
+                    Icons.arrow_forward_ios_outlined,
+                    color: kRed,
+                  ),
+                  onTap: () => logoutDialoge(context)),
             ),
-            
-        
             const SizedBox(
               height: 430,
             ),
-             const Text(
+            const Text(
               'Version 1.0',
               style: TextStyle(color: Color.fromARGB(255, 162, 159, 159)),
             )
           ],
         ),
       ),
-      
     );
   }
 }

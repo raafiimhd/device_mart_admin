@@ -7,7 +7,7 @@ class GetOrderQurreyModel {
   int? page;
   int? count;
 
-  GetOrderQurreyModel({this.page,this.count});
+  GetOrderQurreyModel({this.page, this.count});
 
   factory GetOrderQurreyModel.fromJson(Map<String, dynamic> json) {
     return _$GetOrderQurreyModelFromJson(json);

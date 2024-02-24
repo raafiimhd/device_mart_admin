@@ -6,9 +6,8 @@ class GetOrderModel {
   @JsonKey(name: 'product_name')
   String? productName;
   @JsonKey(name: 'product_price')
-  String? productPrice;
-  @JsonKey(name: 'product_image')
-  String? image;
+  int? productPrice;
+  Map<String, dynamic>? images;
   @JsonKey(name: 'product_id')
   int? productId;
   @JsonKey(name: 'order_id')
@@ -22,7 +21,7 @@ class GetOrderModel {
 
   GetOrderModel(
       {this.deliveryAddress,
-      this.image,
+      this.images,
       this.orderId,
       this.orderStatus,
       this.productId,

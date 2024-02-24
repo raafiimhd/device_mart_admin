@@ -10,6 +10,7 @@ class AddButton extends StatelessWidget {
     return FloatingActionButton(
       backgroundColor: kWhite,
       onPressed: onPressed,
-    child: icon,);
+      child: icon,
+    );
   }
 }

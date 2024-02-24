@@ -1,6 +1,6 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'add_category_image_id_model.g.dart';
+
 @JsonSerializable()
 class AddCategoryImageIdModel {
   int? id;

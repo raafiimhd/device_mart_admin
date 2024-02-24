@@ -19,7 +19,7 @@ class AddCategoryScreen extends StatelessWidget {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
         child: CustomAppbar(
-          title: 'Add Image',
+          title: 'Add Category',
           leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
@@ -74,19 +74,12 @@ class AddCategoryScreen extends StatelessWidget {
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                         ),
                         child: SizedBox(
-                            width: double.infinity,
-                            child: state.isImageUploading
-                                ? Center(
-                                    child: LoadingAnimationWidget.inkDrop(
-                                        color: kWhite, size: 25),
-                                  )
-                                : SizedBox(
-                                    width: double.infinity,
-                                    child: state.imageModel != null
-                                        ? Image.file(
-                                            state.imageModel!.fileImage)
-                                        : null,
-                                  ))),
+                          width: double.infinity,
+                          child: state.imageModel != null
+                              ? Image.file(state.imageModel!.fileImage)
+                              : Image.network(
+                                  'https://www.shutterstock.com/image-vector/computer-notebook-mockup-transparent-screen-260nw-1099831238.jpg'),
+                        )),
                     kHeightTwenty,
                     const Icon(Iconsax.image),
                     const Text('Select Image'),

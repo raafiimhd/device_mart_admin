@@ -22,12 +22,11 @@ class ScreenSplash extends StatelessWidget {
         },
       );
     });
-    return
-    Scaffold(
+    return Scaffold(
       body: Center(
         child: Text(
           'Device Mart\n      Admin',
-          style: kronOne(color: kWhite, fontSize: 0.10),
+          style: kronOne(color: kBlack, fontSize: 0.10),
         ),
       ),
     );

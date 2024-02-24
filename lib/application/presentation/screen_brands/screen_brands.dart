@@ -64,14 +64,14 @@ class ScreenBrands extends StatelessWidget {
               });
         } else {
           return const Center(
-            child: Text('no users data available'),
+            child: Text('no Brands available'),
           );
         }
       }),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (ctx) => const AddCategoryScreen()));
+          Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => const AddCategoryScreen()));
         },
         child: const Icon(Icons.add),
       ),

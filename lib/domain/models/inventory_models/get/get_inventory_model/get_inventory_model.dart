@@ -1,6 +1,6 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'get_inventory_model.g.dart';
+
 @JsonSerializable()
 class GetInventoryModel {
   final String? brands;
@@ -18,15 +18,15 @@ class GetInventoryModel {
   @JsonKey(name: 'product_name')
   final String? prdctName;
   GetInventoryModel({
-     this.brands,
-     this.categoryId,
-     this.id,
-     this.images,
-     this.isBlocked,
-     this.isWishlisted,
-     this.price,
-     this.prdctDescp,
-     this.prdctName,
+    this.brands,
+    this.categoryId,
+    this.id,
+    this.images,
+    this.isBlocked,
+    this.isWishlisted,
+    this.price,
+    this.prdctDescp,
+    this.prdctName,
   });
 
   factory GetInventoryModel.fromJson(Map<String, dynamic> json) {

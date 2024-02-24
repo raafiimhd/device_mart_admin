@@ -14,39 +14,34 @@ class ScreenDashBoard extends StatelessWidget {
             child: CustomAppbar(
               title: 'Dashboard',
             )),
-        body: Column(
-          children: [
-            Row(
-              children: [
-                InkWell(
-                  child: const DashboardWidgets(
-                    icon: Iconsax.category,
-                    name: 'All Brands',
-                    circleColor: Color.fromARGB(255, 142, 96, 222),
-                  ),
-                  onTap: () =>
-                      Navigator.of(context).pushNamed('/brands'),
+        body: Column(children: [
+          Row(
+            children: [
+              InkWell(
+                child: const DashboardWidgets(
+                  icon: Iconsax.category,
+                  name: 'All Brands',
+                  circleColor: Color.fromARGB(255, 142, 96, 222),
                 ),
-                InkWell(
-                  child: const DashboardWidgets(
-                    icon: Iconsax.box,
-                    name: 'All Products',
-                    circleColor: Color.fromARGB(255, 146, 113, 124),
-                  ),
-                  onTap: () =>
-                    Navigator.of(context).pushNamed('/products'),
-                  
+                onTap: () => Navigator.of(context).pushNamed('/brands'),
+              ),
+              InkWell(
+                child: const DashboardWidgets(
+                  icon: Iconsax.box,
+                  name: 'All Products',
+                  circleColor: Color.fromARGB(255, 146, 113, 124),
                 ),
-                 InkWell(
-                  child: const DashboardWidgets(
-                      icon: Iconsax.user,
-                      name: 'User',
-                      circleColor: Colors.orange),
-                      onTap: () => Navigator.of(context).pushNamed('/user'),
-                ),
-              ],
-            ),
-          ]
-        ));
+                onTap: () => Navigator.of(context).pushNamed('/products'),
+              ),
+              InkWell(
+                child: const DashboardWidgets(
+                    icon: Iconsax.user,
+                    name: 'User',
+                    circleColor: Colors.orange),
+                onTap: () => Navigator.of(context).pushNamed('/user'),
+              ),
+            ],
+          ),
+        ]));
   }
 }

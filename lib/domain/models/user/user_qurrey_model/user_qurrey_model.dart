@@ -7,7 +7,7 @@ class UserQurreyModel {
   int? page;
   int? count;
 
-  UserQurreyModel({this.page,this.count});
+  UserQurreyModel({this.page, this.count});
 
   factory UserQurreyModel.fromJson(Map<String, dynamic> json) {
     return _$UserQurreyModelFromJson(json);

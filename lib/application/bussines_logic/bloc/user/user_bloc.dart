@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:device_mart/data/data_provider/user_provider/user_provider.dart';
-import 'package:device_mart/domain/core/repositories/user_repositories/user_repositories.dart';
+import 'package:device_mart/domain/repositories/user_repositories/user_repositories.dart';
 import 'package:device_mart/domain/models/user/block_and_unblock_user_qurrey_model/block_and_unblock_user_qurrey.dart';
 import 'package:device_mart/domain/models/user/user_qurrey_model/user_qurrey_model.dart';
 import 'package:device_mart/domain/models/user/user_resp_model/user_resp_model.dart';
@@ -16,12 +16,14 @@ part 'user_bloc.freezed.dart';
 @injectable
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserRepository userRepository;
-  final UserProvider userProvider = UserProvider(Dio(), const FlutterSecureStorage());
+  final UserProvider userProvider =
+      UserProvider(Dio(), const FlutterSecureStorage());
   UserBloc(this.userRepository) : super(UserState.initial()) {
-   on<GetUser>((event, emit) async {
+    on<GetUser>((event, emit) async {
       emit(state.copyWith(
-          isLoading: true,isBlocked: false,isUnblocked: false));
-      final result = await userProvider.getUser(userQurreyModel: event.userQurreyModel);
+          isLoading: true, isBlocked: false, isUnblocked: false));
+      final result =
+          await userProvider.getUser(userQurreyModel: event.userQurreyModel);
       result.fold((failure) {
         emit(state.copyWith(
             isLoading: false,
@@ -39,11 +41,12 @@ class UserBloc extends Bloc<UserEvent, UserState> {
             userRespModel: resp));
       });
     });
-       on<BlockUser>((event, emit) async {
+    on<BlockUser>((event, emit) async {
       emit(state.copyWith(
-          isLoading: false,
-          isBlocked: false,
-          isUnblocked: false,));
+        isLoading: false,
+        isBlocked: false,
+        isUnblocked: false,
+      ));
       final result = await userRepository.blockUser(
         blockAndUnblockUserQurreyModel: event.blockAndUnblockUserQurreyModel,
       );
@@ -62,14 +65,16 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           isUnblocked: false,
           message: getUsersResponseModel.message,
         ));
-        add(UserEvent.getUser(userQurreyModel: UserQurreyModel(page: 1,count: 10)));
+        add(UserEvent.getUser(
+            userQurreyModel: UserQurreyModel(page: 1, count: 10)));
       });
-    }); 
+    });
     on<UnBlockUser>((event, emit) async {
       emit(state.copyWith(
-          isLoading: false,
-          isBlocked: false,
-          isUnblocked: false,));
+        isLoading: false,
+        isBlocked: false,
+        isUnblocked: false,
+      ));
       final result = await userRepository.unblockUser(
         blockAndUnblockUserQurreyModel: event.blockAndUnblockUserQurreyModel,
       );
@@ -86,11 +91,11 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           isBlocked: false,
           hasError: false,
           isUnblocked: true,
-          message:getUsersResponseModel.message,
+          message: getUsersResponseModel.message,
         ));
-        add(UserEvent.getUser(userQurreyModel: UserQurreyModel(page: 1,count: 10)));
+        add(UserEvent.getUser(
+            userQurreyModel: UserQurreyModel(page: 1, count: 10)));
       });
-    }); 
+    });
   }
 }
-

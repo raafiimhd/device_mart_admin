@@ -1,6 +1,6 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'block_and_unblock_user_qurrey.g.dart';
+
 @JsonSerializable()
 class BlockAndUnblockUserQurreyModel {
   @JsonKey(name: 'userID')

@@ -11,10 +11,9 @@ class UserState with _$UserState {
     UserRespModel? userRespModel,
   }) = _initial;
   factory UserState.initial() => const UserState(
-    hasError: false,
-    isBlocked: false,
-    isUnblocked: false,
-    isLoading:false,
-
-  );
+        hasError: false,
+        isBlocked: false,
+        isUnblocked: false,
+        isLoading: false,
+      );
 }

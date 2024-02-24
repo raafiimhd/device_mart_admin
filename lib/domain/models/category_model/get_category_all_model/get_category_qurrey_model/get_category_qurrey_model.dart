@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'get_category_qurrey_model.g.dart';
+
 @JsonSerializable()
 class GetCategoryQurreyModel {
   int? page;

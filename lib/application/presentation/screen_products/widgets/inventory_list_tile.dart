@@ -1,4 +1,3 @@
-
 import 'package:device_mart/application/bussines_logic/bloc/inventory/inventory_bloc.dart';
 import 'package:device_mart/application/presentation/widgets/custom_appbar/custom_appbar.dart';
 import 'package:device_mart/domain/core/colors/colors.dart';

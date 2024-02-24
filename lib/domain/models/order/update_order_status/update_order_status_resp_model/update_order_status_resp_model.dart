@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'update_order_status_resp_model.g.dart';
+
 @JsonSerializable()
 class UpdateOrderStatusRespModel {
   dynamic data;

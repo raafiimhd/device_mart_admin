@@ -34,17 +34,17 @@ mixin _$ReportEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SalesReport value) salesReport,
+    required TResult Function(SalesReportEvent value) salesReport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SalesReport value)? salesReport,
+    TResult? Function(SalesReportEvent value)? salesReport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SalesReport value)? salesReport,
+    TResult Function(SalesReportEvent value)? salesReport,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -69,25 +69,25 @@ class _$ReportEventCopyWithImpl<$Res, $Val extends ReportEvent>
 }
 
 /// @nodoc
-abstract class _$$SalesReportImplCopyWith<$Res> {
-  factory _$$SalesReportImplCopyWith(
-          _$SalesReportImpl value, $Res Function(_$SalesReportImpl) then) =
-      __$$SalesReportImplCopyWithImpl<$Res>;
+abstract class _$$SalesReportEventImplCopyWith<$Res> {
+  factory _$$SalesReportEventImplCopyWith(_$SalesReportEventImpl value,
+          $Res Function(_$SalesReportEventImpl) then) =
+      __$$SalesReportEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$SalesReportImplCopyWithImpl<$Res>
-    extends _$ReportEventCopyWithImpl<$Res, _$SalesReportImpl>
-    implements _$$SalesReportImplCopyWith<$Res> {
-  __$$SalesReportImplCopyWithImpl(
-      _$SalesReportImpl _value, $Res Function(_$SalesReportImpl) _then)
+class __$$SalesReportEventImplCopyWithImpl<$Res>
+    extends _$ReportEventCopyWithImpl<$Res, _$SalesReportEventImpl>
+    implements _$$SalesReportEventImplCopyWith<$Res> {
+  __$$SalesReportEventImplCopyWithImpl(_$SalesReportEventImpl _value,
+      $Res Function(_$SalesReportEventImpl) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$SalesReportImpl implements SalesReport {
-  const _$SalesReportImpl();
+class _$SalesReportEventImpl implements SalesReportEvent {
+  const _$SalesReportEventImpl();
 
   @override
   String toString() {
@@ -97,7 +97,7 @@ class _$SalesReportImpl implements SalesReport {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SalesReportImpl);
+        (other.runtimeType == runtimeType && other is _$SalesReportEventImpl);
   }
 
   @override
@@ -134,7 +134,7 @@ class _$SalesReportImpl implements SalesReport {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(SalesReport value) salesReport,
+    required TResult Function(SalesReportEvent value) salesReport,
   }) {
     return salesReport(this);
   }
@@ -142,7 +142,7 @@ class _$SalesReportImpl implements SalesReport {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(SalesReport value)? salesReport,
+    TResult? Function(SalesReportEvent value)? salesReport,
   }) {
     return salesReport?.call(this);
   }
@@ -150,7 +150,7 @@ class _$SalesReportImpl implements SalesReport {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(SalesReport value)? salesReport,
+    TResult Function(SalesReportEvent value)? salesReport,
     required TResult orElse(),
   }) {
     if (salesReport != null) {
@@ -160,8 +160,8 @@ class _$SalesReportImpl implements SalesReport {
   }
 }
 
-abstract class SalesReport implements ReportEvent {
-  const factory SalesReport() = _$SalesReportImpl;
+abstract class SalesReportEvent implements ReportEvent {
+  const factory SalesReportEvent() = _$SalesReportEventImpl;
 }
 
 /// @nodoc
@@ -169,8 +169,7 @@ mixin _$ReportState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
-  SalesReportRespModel? get salesReportRespModel =>
-      throw _privateConstructorUsedError;
+  SalesReport? get salesReport => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ReportStateCopyWith<ReportState> get copyWith =>
@@ -187,7 +186,7 @@ abstract class $ReportStateCopyWith<$Res> {
       {bool isLoading,
       bool hasError,
       String? message,
-      SalesReportRespModel? salesReportRespModel});
+      SalesReport? salesReport});
 }
 
 /// @nodoc
@@ -206,7 +205,7 @@ class _$ReportStateCopyWithImpl<$Res, $Val extends ReportState>
     Object? isLoading = null,
     Object? hasError = null,
     Object? message = freezed,
-    Object? salesReportRespModel = freezed,
+    Object? salesReport = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -221,10 +220,10 @@ class _$ReportStateCopyWithImpl<$Res, $Val extends ReportState>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      salesReportRespModel: freezed == salesReportRespModel
-          ? _value.salesReportRespModel
-          : salesReportRespModel // ignore: cast_nullable_to_non_nullable
-              as SalesReportRespModel?,
+      salesReport: freezed == salesReport
+          ? _value.salesReport
+          : salesReport // ignore: cast_nullable_to_non_nullable
+              as SalesReport?,
     ) as $Val);
   }
 }
@@ -241,7 +240,7 @@ abstract class _$$initialImplCopyWith<$Res>
       {bool isLoading,
       bool hasError,
       String? message,
-      SalesReportRespModel? salesReportRespModel});
+      SalesReport? salesReport});
 }
 
 /// @nodoc
@@ -258,7 +257,7 @@ class __$$initialImplCopyWithImpl<$Res>
     Object? isLoading = null,
     Object? hasError = null,
     Object? message = freezed,
-    Object? salesReportRespModel = freezed,
+    Object? salesReport = freezed,
   }) {
     return _then(_$initialImpl(
       isLoading: null == isLoading
@@ -273,10 +272,10 @@ class __$$initialImplCopyWithImpl<$Res>
           ? _value.message
           : message // ignore: cast_nullable_to_non_nullable
               as String?,
-      salesReportRespModel: freezed == salesReportRespModel
-          ? _value.salesReportRespModel
-          : salesReportRespModel // ignore: cast_nullable_to_non_nullable
-              as SalesReportRespModel?,
+      salesReport: freezed == salesReport
+          ? _value.salesReport
+          : salesReport // ignore: cast_nullable_to_non_nullable
+              as SalesReport?,
     ));
   }
 }
@@ -288,7 +287,7 @@ class _$initialImpl implements _initial {
       {required this.isLoading,
       required this.hasError,
       this.message,
-      this.salesReportRespModel});
+      this.salesReport});
 
   @override
   final bool isLoading;
@@ -297,11 +296,11 @@ class _$initialImpl implements _initial {
   @override
   final String? message;
   @override
-  final SalesReportRespModel? salesReportRespModel;
+  final SalesReport? salesReport;
 
   @override
   String toString() {
-    return 'ReportState(isLoading: $isLoading, hasError: $hasError, message: $message, salesReportRespModel: $salesReportRespModel)';
+    return 'ReportState(isLoading: $isLoading, hasError: $hasError, message: $message, salesReport: $salesReport)';
   }
 
   @override
@@ -314,13 +313,13 @@ class _$initialImpl implements _initial {
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
             (identical(other.message, message) || other.message == message) &&
-            (identical(other.salesReportRespModel, salesReportRespModel) ||
-                other.salesReportRespModel == salesReportRespModel));
+            (identical(other.salesReport, salesReport) ||
+                other.salesReport == salesReport));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, hasError, message, salesReportRespModel);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, hasError, message, salesReport);
 
   @JsonKey(ignore: true)
   @override
@@ -334,7 +333,7 @@ abstract class _initial implements ReportState {
       {required final bool isLoading,
       required final bool hasError,
       final String? message,
-      final SalesReportRespModel? salesReportRespModel}) = _$initialImpl;
+      final SalesReport? salesReport}) = _$initialImpl;
 
   @override
   bool get isLoading;
@@ -343,7 +342,7 @@ abstract class _initial implements ReportState {
   @override
   String? get message;
   @override
-  SalesReportRespModel? get salesReportRespModel;
+  SalesReport? get salesReport;
   @override
   @JsonKey(ignore: true)
   _$$initialImplCopyWith<_$initialImpl> get copyWith =>

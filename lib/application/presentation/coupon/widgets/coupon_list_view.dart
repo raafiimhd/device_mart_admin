@@ -39,8 +39,24 @@ class CouponListView extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: kWhite,
+                            boxShadow: const [
+                              BoxShadow(
+                                color: Color.fromARGB(255, 222, 221, 221),
+                                offset: Offset(
+                                  5.0,
+                                  5.0,
+                                ),
+                                blurRadius: 10.0,
+                                spreadRadius: 2.0,
+                              ),
+                              BoxShadow(
+                                color: kWhite,
+                                offset: Offset(0.0, 0.0),
+                                blurRadius: 0.0,
+                                spreadRadius: 0.0,
+                              ),
+                            ],
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           width: screenWidth,
                           child: Padding(
@@ -77,9 +93,11 @@ class CouponListView extends StatelessWidget {
                                   'Discount Max Percentage:${coupon.discountPercentage}%',
                                   style: const TextStyle(
                                       fontSize: 12,
-                                      fontFamily: AutofillHints.creditCardNumber),
+                                      fontFamily:
+                                          AutofillHints.creditCardNumber),
                                 ),
-                                Text('Valid Days:${coupon.validFrom}/${coupon.validTill}',
+                                Text(
+                                    'Valid Days:${coupon.validFrom}/${coupon.validTill}',
                                     style: const TextStyle(
                                       fontSize: 12,
                                       fontWeight: FontWeight.normal,
@@ -134,15 +152,13 @@ class CouponListView extends StatelessWidget {
                                 Navigator.of(context).push(MaterialPageRoute(
                                     builder: (context) => UpdateCouponScreen(
                                         id: coupon.id!,
-                                        initialCouponName:
-                                            coupon.couponName!,
+                                        initialCouponName: coupon.couponName!,
                                         initialCode: coupon.code!,
-                                        initialMinValue:
-                                            coupon.minOrderValue!,
-                                        initialDisCountMax: coupon
-                                            .discountMaxAmount!,
-                                        initialDisCountPer: coupon
-                                            .discountPercentage!)));
+                                        initialMinValue: coupon.minOrderValue!,
+                                        initialDisCountMax:
+                                            coupon.discountMaxAmount!,
+                                        initialDisCountPer:
+                                            coupon.discountPercentage!)));
                               },
                             )
                           ],

@@ -8,5 +8,5 @@ class AuthState with _$AuthState {
       required bool isLoading,
       required bool hasError}) = _Initial;
   factory AuthState.initial() =>
-      const AuthState(isLoading: false, hasError: false,obscure: true);
+      const AuthState(isLoading: false, hasError: false, obscure: true);
 }

@@ -1,7 +1,7 @@
-
 import 'package:device_mart/domain/models/inventory_models/get/get_inventory_model/get_inventory_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'get_inventory_resp_model.g.dart';
+
 @JsonSerializable()
 class GetInventoryRespModel {
   List<GetInventoryModel>? data;
@@ -18,5 +18,5 @@ class GetInventoryRespModel {
   factory GetInventoryRespModel.fromJson(Map<String, dynamic> json) {
     return _$GetInventoryRespModelFromJson(json);
   }
-  Map<String,dynamic> toJson() => _$GetInventoryRespModelToJson(this);
+  Map<String, dynamic> toJson() => _$GetInventoryRespModelToJson(this);
 }

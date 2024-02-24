@@ -12,16 +12,14 @@ import 'package:dio/dio.dart';
 
 abstract class CategoryRepository {
   Future<Either<ErrorMsg, GetCategoryRespModel>> getCategory(
-   {required GetCategoryQurreyModel getCategoryQurreyModel}
-  );
+      {required GetCategoryQurreyModel getCategoryQurreyModel});
   Future<Either<ErrorMsg, AddCategoryRespModel>> addCategory(
       {required AddCategoryModel addCategoryModel});
   Future<Either<ErrorMsg, UpdateCategoryRespModel>> updateCategory(
       {required UpdateCategoryModel updateCategoryModel});
 
   Future<Either<ErrorMsg, AddCategoryRespModel>> addCategoryImage(
-      {required AddCategoryModel addCategoryModel,
-      required FormData formData});
+      {required AddCategoryModel addCategoryModel, required FormData formData});
 
   Future<Either<ErrorMsg, BlockUnlbockResponseModel>> blockCategory(
       {required BlockAndUnblockCategoryModelQurrey

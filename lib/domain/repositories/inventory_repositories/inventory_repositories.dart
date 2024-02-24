@@ -30,6 +30,5 @@ abstract class InventoryRepositery {
       {required BlockAndUnblockQurrey blockAndUnblockQurrey});
   Future<Either<ErrorMsg, GetManagementRespModel>> getManagement(
       {required GetQurreyModel getQurreyModel,
-      required GetResponseQurrey getResponseQurrey
-      });
+      required GetResponseQurrey getResponseQurrey});
 }

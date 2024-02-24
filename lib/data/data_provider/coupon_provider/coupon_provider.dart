@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:device_mart/domain/core/constants/api_endponts/api_endpoints.dart';
 import 'package:device_mart/domain/core/constants/const.dart';
 import 'package:device_mart/domain/core/constants/error/error_msg.dart';
-import 'package:device_mart/domain/core/repositories/coupon_repositories/coupon_repositories.dart';
+import 'package:device_mart/domain/repositories/coupon_repositories/coupon_repositories.dart';
 import 'package:device_mart/domain/models/coupon/add/add_coupon_model/add_coupon_model.dart';
 import 'package:device_mart/domain/models/coupon/add/add_coupon_model/add_coupon_resp_model.dart';
 import 'package:device_mart/domain/models/coupon/block_and_unblock_model/block_and_unblock_qurrey_model/block_and_unblock_qurrey_model.dart';
@@ -91,13 +91,16 @@ class CouponProvider implements CouponRepositery {
       } else {
         return Left(ErrorMsg(message: 'Token is null.'));
       }
-      final respone = await dio.put(ApiEndPoints.baseUrl +
-          ApiEndPoints.updateCouponEndPoint
-              .replaceFirst('{couponID}', updateCouponModel.id.toString()),data: updateCouponModel.toJson());
-      if (respone.statusCode == 200 || respone.statusCode == 201) {
+      final respone = await dio.put(
+          ApiEndPoints.baseUrl +
+              ApiEndPoints.updateCouponEndPoint
+                  .replaceFirst('{couponID}', updateCouponModel.id.toString()),
+          data: updateCouponModel.toJson());
+      if (respone.statusCode == 200) {
         return Right(UpdateCouponRespModel.fromJson(respone.data));
       } else {
-        return Left(ErrorMsg(message: UpdateCouponRespModel.fromJson(respone.data).message!));
+        return Left(ErrorMsg(
+            message: UpdateCouponRespModel.fromJson(respone.data).message!));
       }
     } on DioException catch (dioError) {
       log('DioException: ${dioError.requestOptions.uri}');
@@ -110,8 +113,10 @@ class CouponProvider implements CouponRepositery {
   }
 
   @override
-  Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> blockCoupon({required BlockAndUnblockCouponQurreyModel blockAndUnblockCouponQurreyModel}) async{
-     try {
+  Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> blockCoupon(
+      {required BlockAndUnblockCouponQurreyModel
+          blockAndUnblockCouponQurreyModel}) async {
+    try {
       final token = await secureStorage.read(key: 'token');
       if (token != null) {
         dio.options.headers["Authorization"] = 'Bearer $token';
@@ -122,12 +127,12 @@ class CouponProvider implements CouponRepositery {
       final response = await dio.put(ApiEndPoints.baseUrl +
           ApiEndPoints.blockCouponEndPoint.replaceFirst(
               '{couponID}', blockAndUnblockCouponQurreyModel.id.toString()));
-      if (response.statusCode == 200 || response.statusCode == 201) {
+      if (response.statusCode == 200) {
         return Right(BlockAndUnbockCouponRespModel.fromJson(response.data));
       } else {
         return Left(ErrorMsg(
-            message:
-                BlockAndUnbockCouponRespModel.fromJson(response.data).message!));
+            message: BlockAndUnbockCouponRespModel.fromJson(response.data)
+                .message!));
       }
     } on DioException catch (dioError) {
       log('Requested URL: ${dioError.requestOptions.uri}');
@@ -140,8 +145,10 @@ class CouponProvider implements CouponRepositery {
   }
 
   @override
-  Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> unBlockCoupon({required BlockAndUnblockCouponQurreyModel blockAndUnblockCouponQurreyModel}) async{
-     try {
+  Future<Either<ErrorMsg, BlockAndUnbockCouponRespModel>> unBlockCoupon(
+      {required BlockAndUnblockCouponQurreyModel
+          blockAndUnblockCouponQurreyModel}) async {
+    try {
       final token = await secureStorage.read(key: 'token');
       if (token != null) {
         dio.options.headers["Authorization"] = 'Bearer $token';
@@ -156,8 +163,8 @@ class CouponProvider implements CouponRepositery {
         return Right(BlockAndUnbockCouponRespModel.fromJson(response.data));
       } else {
         return Left(ErrorMsg(
-            message:
-                BlockAndUnbockCouponRespModel.fromJson(response.data).message!));
+            message: BlockAndUnbockCouponRespModel.fromJson(response.data)
+                .message!));
       }
     } on DioException catch (dioError) {
       log('Requested URL: ${dioError.requestOptions.uri}');

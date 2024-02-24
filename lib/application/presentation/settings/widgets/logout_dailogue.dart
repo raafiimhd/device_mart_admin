@@ -15,13 +15,11 @@ Future<dynamic> logoutDialoge(BuildContext context) {
               children: [
             TextSpan(
                 text: " Confirm ",
-                style: TextStyle(
-                    fontWeight: FontWeight.w800, color: kBlack)),
+                style: TextStyle(fontWeight: FontWeight.w800, color: kBlack)),
             TextSpan(text: 'else click'),
             TextSpan(
                 text: ' Cancel ',
-                style:
-                    TextStyle(fontWeight: FontWeight.w800, color: kBlack))
+                style: TextStyle(fontWeight: FontWeight.w800, color: kBlack))
           ])),
       actions: [
         TextButton(

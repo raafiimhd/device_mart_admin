@@ -1,4 +1,3 @@
-
 import 'package:device_mart/application/bussines_logic/bloc/inventory/inventory_bloc.dart';
 import 'package:device_mart/application/presentation/screen_products/widgets/inventory_list_tile.dart';
 import 'package:device_mart/application/presentation/widgets/custom_appbar/custom_appbar.dart';
@@ -36,9 +35,7 @@ class CategoryUnderProducts extends StatelessWidget {
             return const Center(
               child: Text('nothing to show'),
             );
-          }
-          
-          else if (state.getManagementRespModel != null &&
+          } else if (state.getManagementRespModel != null &&
               state.getManagementRespModel!.data != null &&
               state.getManagementRespModel!.data!.isNotEmpty) {
             return Padding(
@@ -117,7 +114,7 @@ class CategoryUnderProducts extends StatelessWidget {
                 },
               ),
             );
-          }else {
+          } else {
             return const Center(child: Text('no data available '));
           }
         },

@@ -1,7 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:device_mart/application/presentation/widgets/image_picker/image_picker.dart';
 import 'package:device_mart/data/data_provider/category_provider/category_provider.dart';
-import 'package:device_mart/domain/core/repositories/category_repositories/category_repositories.dart';
+import 'package:device_mart/domain/models/order/order_status_model/order_status_model.dart';
+import 'package:device_mart/domain/repositories/category_repositories/category_repositories.dart';
 import 'package:device_mart/domain/models/category_model/add_category_all_model/add_category_model/add_category_model.dart';
 import 'package:device_mart/domain/models/category_model/add_category_all_model/add_category_resp_model/add_category_resp_model.dart';
 import 'package:device_mart/domain/models/category_model/block_and_unblock_model/block_and_unblock_resp_model/block_and_unblock_resp_model.dart';
@@ -37,13 +38,14 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           isLoading: true,
           networkImage: null,
           isAdding: false,
-           isUnBlocked: false,
+          isUnBlocked: false,
           hasError: false,
-           isBlocked: false,
+          isBlocked: false,
           message: null,
           getCatogereyResponseModel: null));
 
-      final result = await categoryRepository.getCategory(getCategoryQurreyModel:event.getCategoryQurreyModel );
+      final result = await categoryRepository.getCategory(
+          getCategoryQurreyModel: event.getCategoryQurreyModel);
       result.fold(
         (failure) {
           emit(state.copyWith(
@@ -79,13 +81,17 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     });
     on<AddCategory>((event, emit) async {
       try {
-        emit(state.copyWith(isLoading: true,isImageUploading: true,isBlocked: false,isUnBlocked: false));
+        emit(state.copyWith(
+            isLoading: true,
+            isImageUploading: true,
+            isBlocked: false,
+            isUnBlocked: false));
 
         final result = await categoryRepository.addCategory(
           addCategoryModel: event.addCategoryModel,
         );
 
-       await result.fold(
+        await result.fold(
           (failure) => throw Exception('Something went wrong'),
           (resp) async {
             if (resp.statusCode == 200) {
@@ -97,7 +103,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
                 formData: FormData.fromMap(imageMap),
               );
 
-            imageResult.fold(
+              imageResult.fold(
                 (failure) => throw Exception('Something went wrong'),
                 (resp) {
                   emit(state.copyWith(
@@ -116,7 +122,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           },
         );
 
-        add(CategoryEvent.getCategory(getCategoryQurreyModel: GetCategoryQurreyModel(page: 1,count: 30)));
+        add(CategoryEvent.getCategory(
+            getCategoryQurreyModel:
+                GetCategoryQurreyModel(page: 1, count: 30)));
       } catch (e) {
         emit(state.copyWith(
           isLoading: false,
@@ -160,13 +168,19 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
             isBlocked: false,
             isDone: true,
             message: resp.message));
-        add(CategoryEvent.getCategory(getCategoryQurreyModel: GetCategoryQurreyModel(page: 1,count: 30)));
+        add(CategoryEvent.getCategory(
+            getCategoryQurreyModel:
+                GetCategoryQurreyModel(page: 1, count: 30)));
       });
     });
 
     on<PickImages>((event, emit) async {
       image = await PickImage.getImageFromGallery();
-      emit(state.copyWith(imageModel: image,isBlocked: false,isUnBlocked: false));
+      emit(state.copyWith(
+          imageModel: image,
+          isBlocked: false,
+          isUnBlocked: false,
+          isImageUploading: false));
     });
     // on<AddImage>((event, emit) async {
     //   emit(state.copyWith(isImageUploading: true));
@@ -202,8 +216,7 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           isBlocked: false,
           isUnBlocked: false,
           isChange: false,
-          message: null
-          ));
+          message: null));
       final result = await categoryRepository.blockCategory(
         blockAndUnblockCategoryModelQurrey: event.blockUnblockUserQurrey,
       );
@@ -222,14 +235,18 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           hasError: false,
           isUnBlocked: false,
           message: resp.message,
-          
         ));
-        add(CategoryEvent.getCategory(getCategoryQurreyModel: GetCategoryQurreyModel(page: 1,count: 30)));
+        add(CategoryEvent.getCategory(
+            getCategoryQurreyModel:
+                GetCategoryQurreyModel(page: 1, count: 30)));
       });
     });
     on<UnBlockCategory>((event, emit) async {
       emit(state.copyWith(
-          isLoading: false, isBlocked: false, isUnBlocked: false,message: null));
+          isLoading: false,
+          isBlocked: false,
+          isUnBlocked: false,
+          message: null));
       final result = await categoryRepository.unblockCategory(
         blockAndUnblockCategoryModelQurrey: event.blockUnblockUserQurrey,
       );
@@ -248,7 +265,9 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
           isUnBlocked: true,
           message: 'Unblocked Category successfully',
         ));
-        add(CategoryEvent.getCategory(getCategoryQurreyModel: GetCategoryQurreyModel(page: 1,count: 30)));
+        add(CategoryEvent.getCategory(
+            getCategoryQurreyModel:
+                GetCategoryQurreyModel(page: 1, count: 30)));
       });
     });
   }

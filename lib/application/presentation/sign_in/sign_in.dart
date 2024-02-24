@@ -19,102 +19,100 @@ class LoginScreen extends StatelessWidget {
     final signin = context.read<AuthBloc>();
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: backgroundColor,
-      body: 
-          Center(
-            child: Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Hero(
-                tag: 'test',
-                child: Container(
-                  constraints: BoxConstraints(maxWidth: size.width * 0.8),
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(20.0),
-                    child: SingleChildScrollView(
-                      child: Form(
-                        key: signin.formKey,
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            LottieBuilder.asset('assets/lottie_jsons/Sign_in.json',
-                                height: size.width * 0.5),
-                            Material(
-                              child: Text(
-                                'Sign In',
-                                style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontSize: 17,
-                                    fontWeight: FontWeight.w800),
-                              ),
-                            ),
-                           kHeightTen,
-                            CustomTextFormField(keyboardType: TextInputType.text,
-                              hintText: 'username',
-                              controller: signin.usernameController,
-                              prefixIcon: Iconsax.user,
-                            ),
-                            CustomTextFormField(keyboardType: TextInputType.text,
-                              hintText: 'Password',
-                              controller: signin.passwordController,
-                              prefixIcon: Iconsax.lock,
-                              isPassword: true,
-                            ),
-                            BlocConsumer<AuthBloc, AuthState>(
-                              listener: (context, state) {
-                                if (state.message != null) {
-                                  if (state.message ==
-                                      'Login success') {
-                                    messageSnackbar(
-                                        context: context,
-                                        message: state.message!,
-                                        isError: false);
-                                    Navigator.of(context)
-                                        .pushNamedAndRemoveUntil(
-                                      Routes.mainpage,
-                                      (route) => false,
-                                    );
-                                  } else if(state.hasError){
-                                    messageSnackbar(
-                                      context: context,
-                                      message: state.message!,
-                                      isError: true,
-                                    );
-                                  }
-                                }
-                              },
-                              builder: (context, state) {
-                                if (state.isLoading) {
-                                  return Center(
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(10.0),
-                                      child: LoadingAnimationWidget.inkDrop(
-                                          color: kWhite, size: 25),
-                                    ),
-                                  );
-                                }
-                                return CustomElevatedButton(
-                                  buttonLabel: "Sign In",
-                                  onPressed: () {
-                                    if (signin.formKey.currentState!
-                                        .validate()) {
-                                      signin.add(const SignIn());
-                                    }
-                                  },
-                                );
-                              },
-                            ),
-                          ],
+      backgroundColor: kWhite,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Hero(
+            tag: 'test',
+            child: Container(
+              constraints: BoxConstraints(maxWidth: size.width * 0.8),
+              decoration: BoxDecoration(
+                  color: Colors.white, borderRadius: BorderRadius.circular(15)),
+              child: Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SingleChildScrollView(
+                  child: Form(
+                    key: signin.formKey,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        LottieBuilder.asset('assets/lottie_jsons/Sign_in.json',
+                            height: size.width * 0.5),
+                        Material(
+                          child: Text(
+                            'Sign In',
+                            style: TextStyle(
+                                color: Theme.of(context).primaryColor,
+                                fontSize: 17,
+                                fontWeight: FontWeight.w800),
+                          ),
                         ),
-                      ),
+                        kHeightTen,
+                        CustomTextFormField(
+                          keyboardType: TextInputType.text,
+                          hintText: 'username',
+                          controller: signin.usernameController,
+                          prefixIcon: Iconsax.user,
+                        ),
+                        kHeightFive,
+                        CustomTextFormField(
+                          keyboardType: TextInputType.text,
+                          hintText: 'Password',
+                          controller: signin.passwordController,
+                          prefixIcon: Iconsax.lock,
+                          isPassword: true,
+                        ),
+                        BlocConsumer<AuthBloc, AuthState>(
+                          listener: (context, state) {
+                            if (state.message != null) {
+                              if (state.message == 'Login success') {
+                                messageSnackbar(
+                                    context: context,
+                                    message: state.message!,
+                                    isError: false);
+                                Navigator.of(context).pushNamedAndRemoveUntil(
+                                  Routes.mainpage,
+                                  (route) => false,
+                                );
+                              } else if (state.hasError) {
+                                messageSnackbar(
+                                  context: context,
+                                  message: state.message!,
+                                  isError: true,
+                                );
+                              }
+                            }
+                          },
+                          builder: (context, state) {
+                            if (state.isLoading) {
+                              return Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10.0),
+                                  child: LoadingAnimationWidget.inkDrop(
+                                      color: kWhite, size: 25),
+                                ),
+                              );
+                            }
+                            return CustomElevatedButton(
+                              buttonLabel: "Sign In",
+                              onPressed: () {
+                                if (signin.formKey.currentState!.validate()) {
+                                  signin.add(const SignIn());
+                                }
+                              },
+                            );
+                          },
+                        ),
+                      ],
                     ),
                   ),
                 ),
               ),
             ),
           ),
+        ),
+      ),
     );
   }
 }

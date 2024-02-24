@@ -14,7 +14,7 @@ class AddCouponModel {
   @JsonKey(name: 'discount_percentage')
   int? discountPercentage;
   @JsonKey(name: 'validity_days')
-  int validatyDays=1;
+  int validatyDays = 1;
   AddCouponModel(
       {this.discountMaxAmount,
       this.code,

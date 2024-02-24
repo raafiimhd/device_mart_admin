@@ -14,7 +14,7 @@ import 'package:device_mart/domain/models/category_model/update_category_all_mod
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-import 'package:device_mart/domain/core/repositories/category_repositories/category_repositories.dart';
+import 'package:device_mart/domain/repositories/category_repositories/category_repositories.dart';
 
 @LazySingleton(as: CategoryRepository)
 @injectable

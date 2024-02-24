@@ -1,115 +1,148 @@
-import 'package:device_mart/application/bussines_logic/bloc/sales_report/report_bloc.dart';
-import 'package:device_mart/application/presentation/widgets/show_snackbar/show_snackbar.dart';
+import 'package:device_mart/application/presentation/home/widget/list_tile_widget.dart';
 import 'package:device_mart/domain/core/colors/colors.dart';
 import 'package:device_mart/domain/core/constants/const.dart';
+import 'package:device_mart/domain/models/sales_report/sales_report.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SalesReportScreen extends StatelessWidget {
-  const SalesReportScreen({super.key});
+class SalesReportList extends StatelessWidget {
+  const SalesReportList({Key? key, required this.salesReport}) : super(key: key);
+
+  final SalesReport salesReport;
 
   @override
   Widget build(BuildContext context) {
-     double screenWidth = MediaQuery.of(context).size.width;
-    return BlocConsumer<ReportBloc, ReportState>(
-      listener: (context, state) {
-        if (state.hasError) {
-          showSnack(context: context, message: state.message!, color: kRed);
-        }
-      },
-      builder: (context, state) {
-        final List<Map<String, dynamic>> dummyData = [
-          {
-            'avgOrderValue': 'Dummy Avg Order Value',
-            'date': 'Dummy Date',
-            'reportFrom': 'Dummy Report From',
-            'salesGrwthPer': 'Dummy Sales Growth Percentage',
-            'topSelBrnd': 'Dummy Top Selling Brand',
-            'topSelPrdct': 'Dummy Top Selling Product',
-            'totalCpnInc': 'Dummy Total Coupon Incentive',
-            'totalRevnue': 'Dummy Total Revenue',
-            'count': 'Dummy Total Sales Count',
-          }
-        ];
-        final List<Map<String, dynamic>> reports =
-            (state.salesReportRespModel?.data) ?? dummyData;
-    
-        if (reports.isEmpty) {
-          return const Center(
-            child: Text('Nothing to show'),
-          );
-        } else {
-          return Padding(
+    final report = salesReport.data;
+
+    return Padding(
+      padding: const EdgeInsets.only(left: 8, right: 8),
+      child: Stack(
+        children: [
+          Container(
+            height: 300,
+            width: 500,
+            decoration: BoxDecoration(
+              color: sColor,
+              borderRadius: BorderRadius.circular(30),
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ListView.builder(
-              itemBuilder: (context, index) {
-                final report = reports[index];
-                return Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: kWhite,
-                    ),
-                    width: screenWidth,
-                    height: 500,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Date: ${report!.date}',
+                  style: kronOne(color: kWhite),
+                ),
+                Text(
+                  'Report Date: ${report.reportFrom}',
+                  style: subHeading(),
+                ),
+                kHeight100,
+                Text(
+                  'Total Sales',
+                  style: kronOne(color: kWhite),
+                ),
+                Text(
+                  '₹${report.totalRevenue!}',
+                  style: TextStyle(
+                    color: kWhite,
+                    fontSize: 35,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                kHeightTwenty,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      height: 100,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 222, 221, 221),
+                            offset: Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ),
+                          BoxShadow(
+                            color: kWhite,
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          const Center(
-                            child: Text('Monthly Sales Report',
-                            style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),),
-                          ),
-                          const Divider(color: backgroundColor,),
+                          kHeight30,
                           Text(
-                            'Average order value: ${report['avgOrderValue']}',
-                            style: kronOne(),
+                            'Top Sales Count',
+                            style: subHeading(color: sColor),
                           ),
-                          Text(
-                            'Date: ${report['date']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'Report From: ${report['reportFrom']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'SalesGrowthPercentage: ${report['salesGrwthPer']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'Top Selling Brand: ${report['topSelBrnd']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'Top Selling Product: ${report['topSelPrdct']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'Total Coupon Incentive: ${report['totalCpnInc']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'Total Revenue: ${report['totalRevnue']}',
-                            style: kronOne(),
-                          ),
-                          Text(
-                            'Total Sales Count: ${report['count']}',
-                            style: priceStyle,
+                          kHeightTen,
+                          Text('${report.totalSalesCount}',
+                          style: kronOne(),
                           )
                         ],
                       ),
                     ),
-                  ),
-                );
-              },
-              itemCount: reports.length,
+                    Container(
+                      height: 100,
+                      width: 150,
+                      decoration: BoxDecoration(
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromARGB(255, 222, 221, 221),
+                            offset: Offset(
+                              5.0,
+                              5.0,
+                            ),
+                            blurRadius: 10.0,
+                            spreadRadius: 2.0,
+                          ),
+                          BoxShadow(
+                            color: kWhite,
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 0.0,
+                            spreadRadius: 0.0,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          kHeight30,
+                          Text(
+                            'Avg Order Value',
+                            style: subHeading(color: sColor),
+                          ),
+                          kHeightTen,
+                          Text('Rs:${report.averageOrderValue}',
+                          style: kronOne(),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+                ListTileWidget(title: 'Top Selling Brand', subTitle: report.topSellingBrand!, icon: Icons.category),
+                ListTileWidget(title: 'Top Selling Product', subTitle: report.topSellingProduct!, icon: Icons.inventory),
+                ListTileWidget(title: 'Top Quntity Sold', subTitle: report.totalQuantitySold!.toString(), icon: Icons.production_quantity_limits),
+                ListTileWidget(title: 'Total Coupon Incentive', subTitle: report.totalCouponIncentive.toString(), icon: Icons.discount),
+                
+              ],
             ),
-          );
-        }
-      },
+          ),
+        ],
+      ),
     );
   }
 }

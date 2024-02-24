@@ -1,4 +1,3 @@
-
 import 'package:device_mart/domain/core/colors/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -24,13 +23,12 @@ class CustomProductTextFormFieldWidget extends StatelessWidget {
         child: Container(
             color: kWhite,
             child: TextFormField(
-              //  autovalidateMode: AutovalidateMode.onUserInteraction,
               keyboardType: keyboardType,
               maxLines: maxlines,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please fill $hintText';
-                }  else {
+                } else {
                   return null;
                 }
               },

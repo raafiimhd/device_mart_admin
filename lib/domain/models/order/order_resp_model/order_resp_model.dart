@@ -2,6 +2,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:device_mart/domain/models/order/order_data_model/order_data_model.dart';
 part 'order_resp_model.g.dart';
+
 @JsonSerializable()
 class OrderRespModel {
   OrderDataModel? data;

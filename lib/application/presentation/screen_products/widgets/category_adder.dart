@@ -24,20 +24,22 @@ class CategoryAdder extends StatelessWidget {
 
         return Row(
           children: [
-            const Text('Select Category'),
+            const Text(
+              'Select ',
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 17),
+            ),
             DropdownButton<String>(
               value: context.watch<InventoryBloc>().state.catogory,
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               items: (state.getCatogereyResponseModel?.data ?? [])
                   .map<DropdownMenuItem<String>>(
-                    (category) {
-                      return DropdownMenuItem<String>(
-                        value: category.categoryName,
-                        child: Text(category.categoryName),
-                      );
-                    },
-                  )
-                  .toList(),
+                (category) {
+                  return DropdownMenuItem<String>(
+                    value: category.categoryName,
+                    child: Text(category.categoryName),
+                  );
+                },
+              ).toList(),
               onChanged: (selectedCategory) {
                 final categoryId = (state.getCatogereyResponseModel?.data ?? [])
                     .firstWhere(

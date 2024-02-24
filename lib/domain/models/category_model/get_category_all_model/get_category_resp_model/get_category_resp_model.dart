@@ -1,7 +1,7 @@
-
 import 'package:device_mart/domain/models/category_model/get_category_all_model/get_category_model/get_category_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'get_category_resp_model.g.dart';
+
 @JsonSerializable()
 class GetCategoryRespModel {
   List<GetCategoryModel>? data;

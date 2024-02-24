@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'block_and_unblock_qurrey.g.dart';
+
 @JsonSerializable()
 class BlockAndUnblockQurrey {
   @JsonKey(name: 'productID')

@@ -18,7 +18,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:device_mart/domain/core/constants/error/error_msg.dart';
-import 'package:device_mart/domain/core/repositories/inventory_repositories/inventory_repositories.dart';
+import 'package:device_mart/domain/repositories/inventory_repositories/inventory_repositories.dart';
 import 'package:device_mart/domain/models/inventory_models/get/get_inventory_model/get_inventory_resp_model.dart';
 
 @LazySingleton(as: InventoryRepositery)
@@ -66,7 +66,6 @@ class InventoryProvider implements InventoryRepositery {
       {required AddInventoryModel addInventoryModel}) async {
     try {
       final token = await secureStorage.read(key: 'token');
-
 
       if (token != null) {
         dio.options.headers["Authorization"] = 'Bearer $token';

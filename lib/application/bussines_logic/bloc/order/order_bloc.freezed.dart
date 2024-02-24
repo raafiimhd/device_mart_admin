@@ -545,12 +545,18 @@ abstract class UpdateOrder implements OrderEvent {
 mixin _$OrderState {
   bool get isLoading => throw _privateConstructorUsedError;
   bool get hasError => throw _privateConstructorUsedError;
+  bool get isDone => throw _privateConstructorUsedError;
   String? get message => throw _privateConstructorUsedError;
   GetOrderRespModel? get getOrderRespModel =>
       throw _privateConstructorUsedError;
   OrderRespModel? get orderRespModel => throw _privateConstructorUsedError;
   UpdateOrderStatusRespModel? get updateOrderStatusRespModel =>
       throw _privateConstructorUsedError;
+  List<GetOrderModel>? get pending => throw _privateConstructorUsedError;
+  List<GetOrderModel>? get shipped => throw _privateConstructorUsedError;
+  List<GetOrderModel>? get delivered => throw _privateConstructorUsedError;
+  List<GetOrderModel>? get returned => throw _privateConstructorUsedError;
+  List<GetOrderModel>? get cancled => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $OrderStateCopyWith<OrderState> get copyWith =>
@@ -566,10 +572,16 @@ abstract class $OrderStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool isDone,
       String? message,
       GetOrderRespModel? getOrderRespModel,
       OrderRespModel? orderRespModel,
-      UpdateOrderStatusRespModel? updateOrderStatusRespModel});
+      UpdateOrderStatusRespModel? updateOrderStatusRespModel,
+      List<GetOrderModel>? pending,
+      List<GetOrderModel>? shipped,
+      List<GetOrderModel>? delivered,
+      List<GetOrderModel>? returned,
+      List<GetOrderModel>? cancled});
 }
 
 /// @nodoc
@@ -587,10 +599,16 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? isDone = null,
     Object? message = freezed,
     Object? getOrderRespModel = freezed,
     Object? orderRespModel = freezed,
     Object? updateOrderStatusRespModel = freezed,
+    Object? pending = freezed,
+    Object? shipped = freezed,
+    Object? delivered = freezed,
+    Object? returned = freezed,
+    Object? cancled = freezed,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -600,6 +618,10 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDone: null == isDone
+          ? _value.isDone
+          : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -617,6 +639,26 @@ class _$OrderStateCopyWithImpl<$Res, $Val extends OrderState>
           ? _value.updateOrderStatusRespModel
           : updateOrderStatusRespModel // ignore: cast_nullable_to_non_nullable
               as UpdateOrderStatusRespModel?,
+      pending: freezed == pending
+          ? _value.pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      shipped: freezed == shipped
+          ? _value.shipped
+          : shipped // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      delivered: freezed == delivered
+          ? _value.delivered
+          : delivered // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      returned: freezed == returned
+          ? _value.returned
+          : returned // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      cancled: freezed == cancled
+          ? _value.cancled
+          : cancled // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
     ) as $Val);
   }
 }
@@ -632,10 +674,16 @@ abstract class _$$InitialImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       bool hasError,
+      bool isDone,
       String? message,
       GetOrderRespModel? getOrderRespModel,
       OrderRespModel? orderRespModel,
-      UpdateOrderStatusRespModel? updateOrderStatusRespModel});
+      UpdateOrderStatusRespModel? updateOrderStatusRespModel,
+      List<GetOrderModel>? pending,
+      List<GetOrderModel>? shipped,
+      List<GetOrderModel>? delivered,
+      List<GetOrderModel>? returned,
+      List<GetOrderModel>? cancled});
 }
 
 /// @nodoc
@@ -651,10 +699,16 @@ class __$$InitialImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? hasError = null,
+    Object? isDone = null,
     Object? message = freezed,
     Object? getOrderRespModel = freezed,
     Object? orderRespModel = freezed,
     Object? updateOrderStatusRespModel = freezed,
+    Object? pending = freezed,
+    Object? shipped = freezed,
+    Object? delivered = freezed,
+    Object? returned = freezed,
+    Object? cancled = freezed,
   }) {
     return _then(_$InitialImpl(
       isLoading: null == isLoading
@@ -664,6 +718,10 @@ class __$$InitialImplCopyWithImpl<$Res>
       hasError: null == hasError
           ? _value.hasError
           : hasError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isDone: null == isDone
+          ? _value.isDone
+          : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
       message: freezed == message
           ? _value.message
@@ -681,6 +739,26 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value.updateOrderStatusRespModel
           : updateOrderStatusRespModel // ignore: cast_nullable_to_non_nullable
               as UpdateOrderStatusRespModel?,
+      pending: freezed == pending
+          ? _value._pending
+          : pending // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      shipped: freezed == shipped
+          ? _value._shipped
+          : shipped // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      delivered: freezed == delivered
+          ? _value._delivered
+          : delivered // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      returned: freezed == returned
+          ? _value._returned
+          : returned // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
+      cancled: freezed == cancled
+          ? _value._cancled
+          : cancled // ignore: cast_nullable_to_non_nullable
+              as List<GetOrderModel>?,
     ));
   }
 }
@@ -691,15 +769,28 @@ class _$InitialImpl implements _Initial {
   const _$InitialImpl(
       {required this.isLoading,
       required this.hasError,
+      required this.isDone,
       this.message,
       this.getOrderRespModel,
       this.orderRespModel,
-      this.updateOrderStatusRespModel});
+      this.updateOrderStatusRespModel,
+      final List<GetOrderModel>? pending,
+      final List<GetOrderModel>? shipped,
+      final List<GetOrderModel>? delivered,
+      final List<GetOrderModel>? returned,
+      final List<GetOrderModel>? cancled})
+      : _pending = pending,
+        _shipped = shipped,
+        _delivered = delivered,
+        _returned = returned,
+        _cancled = cancled;
 
   @override
   final bool isLoading;
   @override
   final bool hasError;
+  @override
+  final bool isDone;
   @override
   final String? message;
   @override
@@ -708,10 +799,59 @@ class _$InitialImpl implements _Initial {
   final OrderRespModel? orderRespModel;
   @override
   final UpdateOrderStatusRespModel? updateOrderStatusRespModel;
+  final List<GetOrderModel>? _pending;
+  @override
+  List<GetOrderModel>? get pending {
+    final value = _pending;
+    if (value == null) return null;
+    if (_pending is EqualUnmodifiableListView) return _pending;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<GetOrderModel>? _shipped;
+  @override
+  List<GetOrderModel>? get shipped {
+    final value = _shipped;
+    if (value == null) return null;
+    if (_shipped is EqualUnmodifiableListView) return _shipped;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<GetOrderModel>? _delivered;
+  @override
+  List<GetOrderModel>? get delivered {
+    final value = _delivered;
+    if (value == null) return null;
+    if (_delivered is EqualUnmodifiableListView) return _delivered;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<GetOrderModel>? _returned;
+  @override
+  List<GetOrderModel>? get returned {
+    final value = _returned;
+    if (value == null) return null;
+    if (_returned is EqualUnmodifiableListView) return _returned;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  final List<GetOrderModel>? _cancled;
+  @override
+  List<GetOrderModel>? get cancled {
+    final value = _cancled;
+    if (value == null) return null;
+    if (_cancled is EqualUnmodifiableListView) return _cancled;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
 
   @override
   String toString() {
-    return 'OrderState(isLoading: $isLoading, hasError: $hasError, message: $message, getOrderRespModel: $getOrderRespModel, orderRespModel: $orderRespModel, updateOrderStatusRespModel: $updateOrderStatusRespModel)';
+    return 'OrderState(isLoading: $isLoading, hasError: $hasError, isDone: $isDone, message: $message, getOrderRespModel: $getOrderRespModel, orderRespModel: $orderRespModel, updateOrderStatusRespModel: $updateOrderStatusRespModel, pending: $pending, shipped: $shipped, delivered: $delivered, returned: $returned, cancled: $cancled)';
   }
 
   @override
@@ -723,6 +863,7 @@ class _$InitialImpl implements _Initial {
                 other.isLoading == isLoading) &&
             (identical(other.hasError, hasError) ||
                 other.hasError == hasError) &&
+            (identical(other.isDone, isDone) || other.isDone == isDone) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.getOrderRespModel, getOrderRespModel) ||
                 other.getOrderRespModel == getOrderRespModel) &&
@@ -731,12 +872,30 @@ class _$InitialImpl implements _Initial {
             (identical(other.updateOrderStatusRespModel,
                     updateOrderStatusRespModel) ||
                 other.updateOrderStatusRespModel ==
-                    updateOrderStatusRespModel));
+                    updateOrderStatusRespModel) &&
+            const DeepCollectionEquality().equals(other._pending, _pending) &&
+            const DeepCollectionEquality().equals(other._shipped, _shipped) &&
+            const DeepCollectionEquality()
+                .equals(other._delivered, _delivered) &&
+            const DeepCollectionEquality().equals(other._returned, _returned) &&
+            const DeepCollectionEquality().equals(other._cancled, _cancled));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, hasError, message,
-      getOrderRespModel, orderRespModel, updateOrderStatusRespModel);
+  int get hashCode => Object.hash(
+      runtimeType,
+      isLoading,
+      hasError,
+      isDone,
+      message,
+      getOrderRespModel,
+      orderRespModel,
+      updateOrderStatusRespModel,
+      const DeepCollectionEquality().hash(_pending),
+      const DeepCollectionEquality().hash(_shipped),
+      const DeepCollectionEquality().hash(_delivered),
+      const DeepCollectionEquality().hash(_returned),
+      const DeepCollectionEquality().hash(_cancled));
 
   @JsonKey(ignore: true)
   @override
@@ -747,18 +906,25 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements OrderState {
   const factory _Initial(
-          {required final bool isLoading,
-          required final bool hasError,
-          final String? message,
-          final GetOrderRespModel? getOrderRespModel,
-          final OrderRespModel? orderRespModel,
-          final UpdateOrderStatusRespModel? updateOrderStatusRespModel}) =
-      _$InitialImpl;
+      {required final bool isLoading,
+      required final bool hasError,
+      required final bool isDone,
+      final String? message,
+      final GetOrderRespModel? getOrderRespModel,
+      final OrderRespModel? orderRespModel,
+      final UpdateOrderStatusRespModel? updateOrderStatusRespModel,
+      final List<GetOrderModel>? pending,
+      final List<GetOrderModel>? shipped,
+      final List<GetOrderModel>? delivered,
+      final List<GetOrderModel>? returned,
+      final List<GetOrderModel>? cancled}) = _$InitialImpl;
 
   @override
   bool get isLoading;
   @override
   bool get hasError;
+  @override
+  bool get isDone;
   @override
   String? get message;
   @override
@@ -767,6 +933,16 @@ abstract class _Initial implements OrderState {
   OrderRespModel? get orderRespModel;
   @override
   UpdateOrderStatusRespModel? get updateOrderStatusRespModel;
+  @override
+  List<GetOrderModel>? get pending;
+  @override
+  List<GetOrderModel>? get shipped;
+  @override
+  List<GetOrderModel>? get delivered;
+  @override
+  List<GetOrderModel>? get returned;
+  @override
+  List<GetOrderModel>? get cancled;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

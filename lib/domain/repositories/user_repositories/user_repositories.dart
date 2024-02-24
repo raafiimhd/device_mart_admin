@@ -8,7 +8,7 @@ import 'package:device_mart/domain/models/user/user_resp_model/user_resp_model.d
 abstract class UserRepository {
   Future<Either<ErrorMsg, UserRespModel>> getUser(
       {required UserQurreyModel userQurreyModel});
-      Future<Either<ErrorMsg, BlockAndUnblockUserRespModel>> blockUser(
+  Future<Either<ErrorMsg, BlockAndUnblockUserRespModel>> blockUser(
       {required BlockAndUnblockUserQurreyModel blockAndUnblockUserQurreyModel});
   Future<Either<ErrorMsg, BlockAndUnblockUserRespModel>> unblockUser(
       {required BlockAndUnblockUserQurreyModel blockAndUnblockUserQurreyModel});

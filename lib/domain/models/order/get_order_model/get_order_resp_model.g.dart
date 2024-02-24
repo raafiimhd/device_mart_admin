@@ -9,7 +9,7 @@ part of 'get_order_resp_model.dart';
 GetOrderRespModel _$GetOrderRespModelFromJson(Map<String, dynamic> json) =>
     GetOrderRespModel(
       data: (json['data'] as List<dynamic>?)
-          ?.map((e) => e as Map<String, dynamic>)
+          ?.map((e) => GetOrderModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       statusCode: json['status-code'] as int?,
       message: json['message'] as String?,

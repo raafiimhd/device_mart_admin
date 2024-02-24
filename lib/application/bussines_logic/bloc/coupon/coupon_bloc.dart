@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:device_mart/data/data_provider/coupon_provider/coupon_provider.dart';
-import 'package:device_mart/domain/core/repositories/coupon_repositories/coupon_repositories.dart';
+import 'package:device_mart/domain/repositories/coupon_repositories/coupon_repositories.dart';
 import 'package:device_mart/domain/models/coupon/add/add_coupon_model/add_coupon_model.dart';
 import 'package:device_mart/domain/models/coupon/block_and_unblock_model/block_and_unblock_qurrey_model/block_and_unblock_qurrey_model.dart';
 import 'package:device_mart/domain/models/coupon/get/get_coupon_model/get_coupon_resp_model.dart';
@@ -59,8 +59,8 @@ class CouponBloc extends Bloc<CouponEvent, CouponState> {
             isAdding: true,
             isLoading: false,
             message: resp.message));
-            closeController();
-      add(const CouponEvent.getCoupon());
+        closeController();
+        add(const CouponEvent.getCoupon());
       });
     });
     on<UpdateCoupon>((event, emit) async {

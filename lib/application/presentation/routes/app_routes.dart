@@ -8,6 +8,8 @@ import 'package:device_mart/application/presentation/screen_brands/screen_brands
 import 'package:device_mart/application/presentation/screen_products/screen_inventory.dart';
 import 'package:device_mart/application/presentation/screen_user/screen_user.dart';
 import 'package:device_mart/application/presentation/settings/screen_settings.dart';
+import 'package:device_mart/application/presentation/settings/widgets/about_us.dart';
+import 'package:device_mart/application/presentation/settings/widgets/privacy_policy.dart';
 import 'package:device_mart/application/presentation/sign_in/sign_in.dart';
 import 'package:device_mart/application/presentation/splash_Screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -33,13 +35,16 @@ class AppRoute {
         return MaterialPageRoute(builder: (ctx) => const ScreenCoupon());
       case Routes.settings:
         return MaterialPageRoute(builder: (ctx) => const ScreenSettings());
-
+      case Routes.privacy:
+        return MaterialPageRoute(builder: (ctx) => PrivacyAndPolicy());
+      case Routes.about:
+        return MaterialPageRoute(builder: (ctx) => ScreenAbout());
       case Routes.brands:
         return MaterialPageRoute(builder: (ctx) => const ScreenBrands());
       case Routes.products:
-        return MaterialPageRoute(builder: (ctx) =>  ScreenProducts());
+        return MaterialPageRoute(builder: (ctx) => ScreenProducts());
       case Routes.user:
-        return MaterialPageRoute(builder: (ctx) =>  const ScreenUser());
+        return MaterialPageRoute(builder: (ctx) => const ScreenUser());
     }
     return _errorRoute();
   }

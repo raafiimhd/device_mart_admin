@@ -19,14 +19,17 @@ class SubmitButton extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return SizedBox(
       width: size.width * width,
-     child: ElevatedButton(onPressed: onPressed,
-     style: ElevatedButton.styleFrom(
-      backgroundColor: buttonColor,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(borderRadius)
-      )
-     ), child: Text(label,
-     style:  const TextStyle(fontSize: 17,fontWeight: FontWeight.w600),),),
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+            backgroundColor: buttonColor,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(borderRadius))),
+        child: Text(
+          label,
+          style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
+        ),
+      ),
     );
   }
 }

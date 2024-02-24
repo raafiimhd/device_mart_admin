@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'block_and_unblock_resp.g.dart';
+
 @JsonSerializable()
 class BlockAndUnblockRespModel {
   @JsonKey(name: 'status_code')

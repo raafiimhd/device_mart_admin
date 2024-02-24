@@ -11,7 +11,12 @@ class AddInventoryModel {
   int? id;
   @JsonKey(name: 'category_id')
   int? categoryId;
-  AddInventoryModel({this.productName, this.productDesc, this.price, this.id,this.categoryId});
+  AddInventoryModel(
+      {this.productName,
+      this.productDesc,
+      this.price,
+      this.id,
+      this.categoryId});
   factory AddInventoryModel.fromJson(Map<String, dynamic> json) {
     return _$AddInventoryModelFromJson(json);
   }

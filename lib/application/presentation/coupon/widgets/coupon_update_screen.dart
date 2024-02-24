@@ -8,14 +8,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class UpdateCouponScreen extends StatelessWidget {
-  const UpdateCouponScreen(
-      {super.key,
-      required this.id,
-      required this.initialCouponName,
-      required this.initialCode,
-      required this.initialMinValue,
-      required this.initialDisCountMax,
-      required this.initialDisCountPer,});
+  const UpdateCouponScreen({
+    super.key,
+    required this.id,
+    required this.initialCouponName,
+    required this.initialCode,
+    required this.initialMinValue,
+    required this.initialDisCountMax,
+    required this.initialDisCountPer,
+  });
   final int id;
   final String initialCouponName;
   final String initialCode;
@@ -83,18 +84,17 @@ class UpdateCouponScreen extends StatelessWidget {
                       if (couponBloc.couponKey.currentState!.validate()) {
                         couponBloc.add(CouponEvent.updateCoupon(
                             updateCouponModel: UpdateCouponModel(
-                                couponName:
-                                    couponBloc.couponNameController.text.trim(),
-                                minOrderValue: int.parse(
-                                    couponBloc.minValueController.text.trim()),
-                                code: couponBloc.couponCode.text.trim(),
-                                discountMaxAmount: int.parse(couponBloc
-                                    .discountMaxController.text
-                                    .trim()),
-                                discountPercentage: int.parse(
-                                    couponBloc.discountPercentage.text.trim()),
-                                id: id,
-                                )));
+                          couponName:
+                              couponBloc.couponNameController.text.trim(),
+                          minOrderValue: int.parse(
+                              couponBloc.minValueController.text.trim()),
+                          code: couponBloc.couponCode.text.trim(),
+                          discountMaxAmount: int.parse(
+                              couponBloc.discountMaxController.text.trim()),
+                          discountPercentage: int.parse(
+                              couponBloc.discountPercentage.text.trim()),
+                          id: id,
+                        )));
                         Navigator.of(context).pop();
                       }
                     },

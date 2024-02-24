@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:device_mart/application/presentation/widgets/image_picker/image_picker.dart';
 import 'package:device_mart/data/data_provider/inventory_provider/inventory_provider.dart';
-import 'package:device_mart/domain/core/repositories/inventory_repositories/inventory_repositories.dart';
+import 'package:device_mart/domain/repositories/inventory_repositories/inventory_repositories.dart';
 import 'package:device_mart/domain/models/image/image_model/image_model.dart';
 import 'package:device_mart/domain/models/inventory_models/add/add_inventory_image_qurrey_model/add_inventory_image_qurrey.dart';
 import 'package:device_mart/domain/models/inventory_models/add/add_inventory_model/add_inventory_model.dart';
@@ -46,7 +46,11 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
           getResponseQurrey: event.getResponseQurrey);
       result.fold(
           (failure) => emit(state.copyWith(
-              isLoading: false, hasError: true, message: failure.message,isBlocked: false,isUnBlocked: false)),
+              isLoading: false,
+              hasError: true,
+              message: failure.message,
+              isBlocked: false,
+              isUnBlocked: false)),
           (resp) => emit(state.copyWith(
               hasError: false,
               getInventoryRespModel: resp,
@@ -57,7 +61,11 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
     });
     on<AddInventory>((event, emit) async {
       try {
-        emit(state.copyWith(isLoading: true, isImageUploading: true,isBlocked: false,isUnBlocked: false));
+        emit(state.copyWith(
+            isLoading: true,
+            isImageUploading: true,
+            isBlocked: false,
+            isUnBlocked: false));
         final result = await inventoryRepositery.addInventory(
             addInventoryModel: event.addInventoryModel);
         await result.fold((failure) => throw Exception('Something Error'),
@@ -100,38 +108,12 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
     });
     on<postImages>((event, emit) async {
       image = await PickImage.getImageFromGallery();
-      emit(state.copyWith(imageModel: image,isBlocked: false,isUnBlocked: false));
+      emit(state.copyWith(
+          imageModel: image, isBlocked: false, isUnBlocked: false));
     });
-    // on<AddProductImage>((event, emit) async {
-    //   emit(state.copyWith(isImageUploading: true));
-    //   Map<String, dynamic> imageMap = {
-    //     "product-image": state.imageModel!.multipartFile
-    //   };
-    //   final result = await inventoryProvider.addProductImage(
-    //       addInventoryImageQurreyModel: event.addInventoryImageQurreyModel,
-    //       formData: FormData.fromMap(imageMap));
-
-    //   result.fold(
-    //       (failure) => emit(state.copyWith(
-    //           hasError: true,
-    //           message: 'Can\nt Added Image',
-    //           isImageUploading: false)), (resp) {
-    //     emit(state.copyWith(
-    //         hasError: false,
-    //         isImageUploading: false,
-    //         message: 'Image Added Successfully',
-    //         isAddImage: true,
-    //         imageModel: image));
-    //     add(GetInventoryCall(
-    //         getResponseQurrey: GetResponseQurrey(page: 1, count: 30)));
-    //   });
-    // });
     on<UpdateProduct>((event, emit) async {
       emit(state.copyWith(
-        isLoading: true,
-        isBlocked: false,
-        isUnBlocked: false
-      ));
+          isLoading: true, isBlocked: false, isUnBlocked: false));
       final result = await inventoryProvider.updateInventory(
           updateInventoryModel: event.updateInventoryModel);
       result.fold(
@@ -158,7 +140,10 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
     });
     on<BlockProduct>((event, emit) async {
       emit(state.copyWith(
-          isLoading: false, isBlocked: false, isUnBlocked: false,message: null));
+          isLoading: false,
+          isBlocked: false,
+          isUnBlocked: false,
+          message: null));
       final result = await inventoryRepositery.blockInventory(
         blockAndUnblockQurrey: event.blockAndUnblockQurrey,
       );
@@ -183,7 +168,10 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
     });
     on<UnBlockProduct>((event, emit) async {
       emit(state.copyWith(
-          isLoading: false, isBlocked: false, isUnBlocked: false,message: null));
+          isLoading: false,
+          isBlocked: false,
+          isUnBlocked: false,
+          message: null));
       final result = await inventoryRepositery.unblockInventory(
         blockAndUnblockQurrey: event.blockAndUnblockQurrey,
       );
@@ -215,11 +203,10 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
           getQurreyModel: event.getQurreyModel);
       result.fold(
           (failure) => emit(state.copyWith(
-                isLoading: false,
-                hasError: true,
-                message: failure.message,
-                getManagementRespModel: null
-              )),
+              isLoading: false,
+              hasError: true,
+              message: failure.message,
+              getManagementRespModel: null)),
           (resp) => emit(state.copyWith(
                 isLoading: false,
                 hasError: false,

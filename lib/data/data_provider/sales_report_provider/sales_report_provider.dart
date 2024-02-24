@@ -4,12 +4,12 @@ import 'package:dartz/dartz.dart';
 import 'package:device_mart/domain/core/constants/api_endponts/api_endpoints.dart';
 import 'package:device_mart/domain/core/constants/const.dart';
 import 'package:device_mart/domain/core/constants/error/error_msg.dart';
-import 'package:device_mart/domain/models/report/sales_report_resp_model/sales_report_resp_model.dart';
+import 'package:device_mart/domain/models/sales_report/sales_report.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
 
-import 'package:device_mart/domain/core/repositories/report_repositories/report_repositories.dart';
+import 'package:device_mart/domain/repositories/report_repositories/report_repositories.dart';
 
 @LazySingleton(as: SalesReportRepository)
 @injectable
@@ -22,7 +22,7 @@ class SalesReportProvider implements SalesReportRepository {
   );
 
   @override
-  Future<Either<ErrorMsg, SalesReportRespModel>> salesReport() async {
+  Future<Either<ErrorMsg, SalesReport>> salesReport() async {
     try {
       final token = await secureStorage.read(key: 'token');
 
@@ -34,10 +34,10 @@ class SalesReportProvider implements SalesReportRepository {
       }
       final respose = await dio.get(ApiEndPoints.saleReportEndPoint);
       if (respose.statusCode == 200 || respose.statusCode == 201) {
-        return Right(SalesReportRespModel.fromJson(respose.data));
+        return Right(SalesReport.fromJson(respose.data));
       } else {
         return Left(ErrorMsg(
-            message: SalesReportRespModel.fromJson(respose.data).message!));
+            message: SalesReport.fromJson(respose.data).message!));
       }
     } on DioException catch (dioError) {
       log('Requested URL: ${dioError.requestOptions.uri}');

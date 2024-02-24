@@ -1,6 +1,6 @@
 import 'package:device_mart/domain/core/constants/api_endponts/api_endpoints.dart';
 import 'package:device_mart/domain/models/auth_model/login_model.dart';
-import 'package:device_mart/domain/core/repositories/auth_repositories/auth_repositories.dart';
+import 'package:device_mart/domain/repositories/auth_repositories/auth_repositories.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';

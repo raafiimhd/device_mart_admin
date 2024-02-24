@@ -1,4 +1,3 @@
-
 import 'package:device_mart/domain/core/colors/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -30,11 +29,11 @@ class CustomCouponTextFormFieldWidget extends StatelessWidget {
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please fill $hintText';
-                }  else {
+                } else {
                   return null;
                 }
               },
-            
+
               // style: kronOne(),
               controller: controller,
               decoration: InputDecoration(

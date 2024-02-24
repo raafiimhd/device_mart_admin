@@ -1,6 +1,6 @@
-
 import 'package:freezed_annotation/freezed_annotation.dart';
 part 'update_coupon_resp_model.g.dart';
+
 @JsonSerializable()
 class UpdateCouponRespModel {
   int? statusCode;

@@ -25,70 +25,72 @@ class AddCouponScreen extends StatelessWidget {
             showSnack(context: context, message: state.message!, color: kRed);
           }
         },
-        
         builder: (context, state) {
-          return Form(
-            key: couponBloc.couponKey,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  CustomCouponTextFormFieldWidget(
-                      hintText: 'coupon name',
-                      controller: couponBloc.couponNameController,
-                      keyboardType: TextInputType.name),
-                  CustomCouponTextFormFieldWidget(
-                      hintText: 'code',
-                      controller: couponBloc.couponCode,
-                      keyboardType: TextInputType.text),
-                  CustomCouponTextFormFieldWidget(
-                      hintText: 'min order value',
-                      controller: couponBloc.minValueController,
-                      keyboardType: TextInputType.number),
-                  CustomCouponTextFormFieldWidget(
-                      hintText: 'discount max amount',
-                      controller: couponBloc.discountMaxController,
-                      keyboardType: TextInputType.number),
-                  CustomCouponTextFormFieldWidget(
-                      hintText: 'discount perecentage',
-                      controller: couponBloc.discountPercentage,
-                      keyboardType: TextInputType.number),
-                      CustomCouponTextFormFieldWidget(
-                      hintText: 'validaty days',
-                      controller: couponBloc.validcontroller,
-                      keyboardType: TextInputType.number),
-                      TextButton.icon(
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(kGreen),
-                  ),
-                  onPressed: () {
-                    FocusScope.of(context).unfocus();
-                    if (couponBloc.couponKey.currentState!.validate()) {
-                      couponBloc.add(CouponEvent.addCoupon(
-                        addCouponModel: AddCouponModel(
+          return SingleChildScrollView(
+            child: Form(
+              key: couponBloc.couponKey,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    CustomCouponTextFormFieldWidget(
+                        hintText: 'coupon name',
+                        controller: couponBloc.couponNameController,
+                        keyboardType: TextInputType.name),
+                    CustomCouponTextFormFieldWidget(
+                        hintText: 'code',
+                        controller: couponBloc.couponCode,
+                        keyboardType: TextInputType.text),
+                    CustomCouponTextFormFieldWidget(
+                        hintText: 'min order value',
+                        controller: couponBloc.minValueController,
+                        keyboardType: TextInputType.number),
+                    CustomCouponTextFormFieldWidget(
+                        hintText: 'discount max amount',
+                        controller: couponBloc.discountMaxController,
+                        keyboardType: TextInputType.number),
+                    CustomCouponTextFormFieldWidget(
+                        hintText: 'discount perecentage',
+                        controller: couponBloc.discountPercentage,
+                        keyboardType: TextInputType.number),
+                    CustomCouponTextFormFieldWidget(
+                        hintText: 'validaty days',
+                        controller: couponBloc.validcontroller,
+                        keyboardType: TextInputType.number),
+                    TextButton.icon(
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(kGreen),
+                      ),
+                      onPressed: () {
+                        FocusScope.of(context).unfocus();
+                        if (couponBloc.couponKey.currentState!.validate()) {
+                          couponBloc.add(CouponEvent.addCoupon(
+                              addCouponModel: AddCouponModel(
                             couponName:
                                 couponBloc.couponNameController.text.trim(),
                             minOrderValue: int.parse(
                                 couponBloc.minValueController.text.trim()),
                             code: couponBloc.couponCode.text.trim(),
-          
-                            discountMaxAmount: int.parse(couponBloc.discountMaxController.text.trim()),
-                            discountPercentage: int.parse(couponBloc.discountPercentage.text.trim()),)
-                            
-                      ));
-                      Navigator.of(context).pop();
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.add,
-                    color: kBlack,
-                  ),
-                  label: const Text(
-                    'Add Coupon',
-                    style: TextStyle(color: kBlack),
-                  ),
-                )
-                ],
+                            discountMaxAmount: int.parse(
+                                couponBloc.discountMaxController.text.trim()),
+                            discountPercentage: int.parse(
+                                couponBloc.discountPercentage.text.trim()),
+                          )));
+                          Navigator.of(context).pop();
+                        }
+                      },
+                      icon: const Icon(
+                        Icons.add,
+                        color: kBlack,
+                      ),
+                      label: const Text(
+                        'Add Coupon',
+                        style: TextStyle(color: kBlack),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
           );

@@ -30,15 +30,16 @@ class ScreenCoupon extends StatelessWidget {
         }
       }, builder: (context, state) {
         if (state.isLoading) {
-          return Center(child: LoadingAnimationWidget.inkDrop(color: kWhite, size: 25));
+          return Center(
+              child: LoadingAnimationWidget.inkDrop(color: kWhite, size: 25));
         }
         return const CouponListView();
       }),
       floatingActionButton: AddButton(
           icon: const Icon(Icons.add),
           onPressed: () {
-            Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AddCouponScreen()));
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const AddCouponScreen()));
           }),
     );
   }

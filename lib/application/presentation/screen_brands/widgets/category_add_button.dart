@@ -18,7 +18,7 @@ class CategoryAddButton extends StatelessWidget {
             context: context,
             color: kRed,
             message: 'Cannot add brands,Something Problem');
-      }  else if (state.addCategoryRespModel != null) {
+      } else if (state.addCategoryRespModel != null) {
         showSnack(
             context: context, message: 'Succesfuly Add Brands', color: kGreen);
       }
@@ -27,7 +27,8 @@ class CategoryAddButton extends StatelessWidget {
         onPressed: () {
           if (categoryBloc.categoryKey.currentState!.validate()) {
             if (state.imageModel == null) {
-              showSnack(context: context, message: 'Image is Required',color: kRed);
+              showSnack(
+                  context: context, message: 'Image is Required', color: kRed);
             }
             context.read<CategoryBloc>().add(CategoryEvent.addCategory(
                     addCategoryModel: AddCategoryModel(
@@ -36,7 +37,6 @@ class CategoryAddButton extends StatelessWidget {
                       .categoryController
                       .text
                       .trim(),
-                      
                 )));
 
             Navigator.of(context).pop();

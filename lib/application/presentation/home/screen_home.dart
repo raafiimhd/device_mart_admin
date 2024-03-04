@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
               salesReport: state.salesReport!,
             );
           } else {
-            return Center(
+            return const Center(
               child: Text('No sales report available'),
             );
           }

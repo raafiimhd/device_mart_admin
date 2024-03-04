@@ -78,7 +78,7 @@ class ListOfBrands extends StatelessWidget {
                         : const DecorationImage(
                             image: NetworkImage(
                                 'https://www.shutterstock.com/image-vector/computer-notebook-mockup-transparent-screen-260nw-1099831238.jpg'),
-                            fit: BoxFit.cover,
+                            
                           ),
                     borderRadius: BorderRadius.circular(10),
                   ),

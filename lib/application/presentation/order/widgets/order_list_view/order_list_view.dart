@@ -21,13 +21,13 @@ class OrderListView extends StatelessWidget {
           title: Text(data.productName!),
           subtitle: Text(data.paymentMethod!),
           trailing: Text(
-            '₹ ${data.productPrice!.round().toString()}',
+            '₹ ${data.productPrice!.toString()}',
             style: const TextStyle(fontSize: 20),
           ),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) =>
-                    ScreenOrderDetail(orderId: data.orderId!, index: index)));
+                    ScreenOrderDetail(data: data,)));
           },
         );
       },

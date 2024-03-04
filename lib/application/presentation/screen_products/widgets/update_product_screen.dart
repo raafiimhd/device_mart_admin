@@ -1,4 +1,5 @@
 import 'package:device_mart/application/bussines_logic/bloc/inventory/inventory_bloc.dart';
+import 'package:device_mart/application/presentation/screen_products/widgets/category_adder.dart';
 import 'package:device_mart/application/presentation/screen_products/widgets/custom_form_field.dart';
 import 'package:device_mart/application/presentation/widgets/custom_appbar/custom_appbar.dart';
 import 'package:device_mart/application/presentation/widgets/show_snackbar/show_snackbar.dart';
@@ -11,12 +12,10 @@ class UpdateProductscreen extends StatelessWidget {
   const UpdateProductscreen(
       {super.key,
       required this.id,
-      required this.categoryId,
       required this.initialProductName,
       required this.initialProductPrice,
       required this.initialProductDesc});
   final int id;
-  final int categoryId;
   final String initialProductName;
   final int initialProductPrice;
   final String initialProductDesc;
@@ -63,6 +62,7 @@ class UpdateProductscreen extends StatelessWidget {
                   keyboardType: TextInputType.text,
                   maxlines: 3,
                 ),
+                const CategoryAdder(),
                 TextButton.icon(
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(kGreen),
@@ -77,7 +77,7 @@ class UpdateProductscreen extends StatelessWidget {
                                   prdctBloc.productPriceController.text.trim()),
                               prdctDesc: prdctBloc.productDesc.text.trim(),
                               id: id,
-                              categoryId: categoryId)));
+                              categoryId: state.categoryId)));
                       Navigator.of(context).pop();
                     }
                   },

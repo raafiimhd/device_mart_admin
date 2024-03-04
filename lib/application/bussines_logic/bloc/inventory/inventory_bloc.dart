@@ -88,12 +88,12 @@ class InventoryBloc extends Bloc<InventoryEvent, InventoryState> {
                   isAdded: true,
                   message: resp.message,
                   addInventoryRespModel: resp));
+                  closeAddController();
+        add(GetInventoryCall(
+            getResponseQurrey: GetResponseQurrey(page: 1, count: 30)));
             });
           }
         });
-        closeAddController();
-        add(GetInventoryCall(
-            getResponseQurrey: GetResponseQurrey(page: 1, count: 30)));
       } catch (e) {
         emit(state.copyWith(
           isLoading: false,

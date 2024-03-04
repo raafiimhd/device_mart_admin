@@ -12,13 +12,13 @@ class UserListView extends StatelessWidget {
   final UserModel user;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-        width: sWidth,
-        height: sWidth * 0.40,
-        child: Card(
-            color: kWhite,
-            child: Padding(
-              padding: const EdgeInsets.all(10),
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SizedBox(
+          width: sWidth,
+          height: sWidth * 0.40,
+          child: Card(
+              color: kWhite,
               child: Column(
                 children: [
                   Row(
@@ -78,7 +78,7 @@ class UserListView extends StatelessWidget {
                     ],
                   )
                 ],
-              ),
-            )));
+              ))),
+    );
   }
 }

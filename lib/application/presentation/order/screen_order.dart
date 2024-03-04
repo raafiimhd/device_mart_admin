@@ -49,8 +49,8 @@ class ScreenOrder extends StatelessWidget {
                 OrderListView(orderList: state.returned),
               ]);
             } else {
-              return Center(
-                child: Text('Nothing to show'),
+              return const Center(
+                child: Text('No order Available'),
               );
             }
           },

@@ -5,7 +5,7 @@ import 'package:device_mart/domain/models/sales_report/sales_report.dart';
 import 'package:flutter/material.dart';
 
 class SalesReportList extends StatelessWidget {
-  const SalesReportList({Key? key, required this.salesReport}) : super(key: key);
+  const SalesReportList({super.key, required this.salesReport});
 
   final SalesReport salesReport;
 
@@ -45,7 +45,7 @@ class SalesReportList extends StatelessWidget {
                 ),
                 Text(
                   '₹${report.totalRevenue!}',
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: kWhite,
                     fontSize: 35,
                     fontWeight: FontWeight.bold,
@@ -136,7 +136,6 @@ class SalesReportList extends StatelessWidget {
                 ListTileWidget(title: 'Top Selling Brand', subTitle: report.topSellingBrand!, icon: Icons.category),
                 ListTileWidget(title: 'Top Selling Product', subTitle: report.topSellingProduct!, icon: Icons.inventory),
                 ListTileWidget(title: 'Top Quntity Sold', subTitle: report.totalQuantitySold!.toString(), icon: Icons.production_quantity_limits),
-                ListTileWidget(title: 'Total Coupon Incentive', subTitle: report.totalCouponIncentive.toString(), icon: Icons.discount),
                 
               ],
             ),

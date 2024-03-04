@@ -36,9 +36,9 @@ class AppRoute {
       case Routes.settings:
         return MaterialPageRoute(builder: (ctx) => const ScreenSettings());
       case Routes.privacy:
-        return MaterialPageRoute(builder: (ctx) => PrivacyAndPolicy());
+        return MaterialPageRoute(builder: (ctx) => const PrivacyAndPolicy());
       case Routes.about:
-        return MaterialPageRoute(builder: (ctx) => ScreenAbout());
+        return MaterialPageRoute(builder: (ctx) => const ScreenAbout());
       case Routes.brands:
         return MaterialPageRoute(builder: (ctx) => const ScreenBrands());
       case Routes.products:

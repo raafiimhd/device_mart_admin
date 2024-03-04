@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:device_mart/application/presentation/widgets/image_picker/image_picker.dart';
 import 'package:device_mart/data/data_provider/category_provider/category_provider.dart';
-import 'package:device_mart/domain/models/order/order_status_model/order_status_model.dart';
 import 'package:device_mart/domain/repositories/category_repositories/category_repositories.dart';
 import 'package:device_mart/domain/models/category_model/add_category_all_model/add_category_model/add_category_model.dart';
 import 'package:device_mart/domain/models/category_model/add_category_all_model/add_category_resp_model/add_category_resp_model.dart';

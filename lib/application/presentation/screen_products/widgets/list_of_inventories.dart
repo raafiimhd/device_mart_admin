@@ -77,7 +77,6 @@ class ListOfProducts extends StatelessWidget {
                             initialProductName: inventory.prdctName!,
                             initialProductPrice: inventory.price!,
                             initialProductDesc: inventory.prdctDescp!,
-                            categoryId: inventory.categoryId!,
                           ),
                         ),
                       );

@@ -6,13 +6,13 @@ import 'package:iconsax/iconsax.dart';
 
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required this.hintText,
     this.prefixIcon,
     required this.controller,
     required this.keyboardType,
     this.isPassword = false,
-  }) : super(key: key);
+  });
 
   final String hintText;
   final IconData? prefixIcon;
@@ -44,7 +44,7 @@ class CustomTextFormField extends StatelessWidget {
             obscureText: isPassword ? state.obscure : false,
             controller: controller,
             decoration: InputDecoration(
-               focusedBorder: OutlineInputBorder(
+               focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
             color: kBlack
           )

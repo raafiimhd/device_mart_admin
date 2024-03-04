@@ -56,8 +56,7 @@ class CategoryUnderProducts extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => ProductDetailsScreen(
-                            state: state,
-                            index: index,
+                            inventoryModel:state.getInventoryRespModel!.data![index],
                           ),
                         ),
                       );

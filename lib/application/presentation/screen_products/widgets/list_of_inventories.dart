@@ -26,7 +26,7 @@ class ListOfProducts extends StatelessWidget {
         onSelect(GetInventoryModel(id: inventory.id));
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) =>
-                ProductDetailsScreen(state: state, index: index)));
+                ProductDetailsScreen(inventoryModel: inventory,)));
       },
       child: Container(
         height: double.infinity,

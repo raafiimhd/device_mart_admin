@@ -3,15 +3,19 @@ import 'package:device_mart/application/presentation/widgets/custom_appbar/custo
 import 'package:device_mart/domain/core/colors/colors.dart';
 
 import 'package:device_mart/domain/core/constants/const.dart';
+import 'package:device_mart/domain/models/inventory_models/get/get_inventory_model/get_inventory_model.dart';
+import 'package:device_mart/domain/models/inventory_models/get/get_resp_qurrey_model/get_resp_qurrey_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
   const ProductDetailsScreen(
-      {super.key, required this.state, required this.index});
-  final InventoryState state;
-  final int index;
+      {super.key, required this.inventoryModel});
+  final GetInventoryModel inventoryModel;
   @override
   Widget build(BuildContext context) {
+    context.read<InventoryBloc>().add(InventoryEvent.getInventoryCall(
+        getResponseQurrey: GetResponseQurrey(page: 1, count: 30)));
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: PreferredSize(
@@ -23,7 +27,7 @@ class ProductDetailsScreen extends StatelessWidget {
                 },
                 icon: const Icon(Icons.arrow_back)),
             title:
-                '${state.getInventoryRespModel!.data![index].prdctName} Details'),
+                '${inventoryModel.prdctName} Details'),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -32,21 +36,20 @@ class ProductDetailsScreen extends StatelessWidget {
               width: screenWidth,
               height: 200,
               decoration:
-                  state.getInventoryRespModel!.data![index].images != null
+                  inventoryModel.images != null
                       ? BoxDecoration(
                           color: kWhite,
                           image: DecorationImage(
-                              image: NetworkImage(state.getInventoryRespModel!
-                                  .data![index].images!['urls'].first)))
+                              image: NetworkImage(inventoryModel.images!['urls'].first)))
                       : null,
             ),
             kHeightTen,
-            Text(state.getInventoryRespModel!.data![index].prdctName!,
+            Text(inventoryModel.prdctName!,
                 style: kronOne()),
             kHeightFive,
             Row(children: [
               Text(
-                '₹${state.getInventoryRespModel!.data![index].price!.roundToDouble()}',
+                '₹${inventoryModel.price!.roundToDouble()}',
                 style: priceStyle,
               ),
             ]),
@@ -62,7 +65,7 @@ class ProductDetailsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                state.getInventoryRespModel!.data![index].prdctDescp!,
+                inventoryModel.prdctDescp!,
                 style: const TextStyle(fontSize: 15),
               ),
             )
